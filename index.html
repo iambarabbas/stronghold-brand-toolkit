@@ -1015,6 +1015,7 @@
     <div class="btn-group">
       <button class="btn btn-secondary" id="btn-prev" style="display:none;" onclick="prevStep()">← Back</button>
       <button class="btn btn-primary" id="btn-next" onclick="nextStep()">Start Session 1 →</button>
+      <button class="btn btn-save" onclick="manualSave()" style="margin-left: 12px;">💾 Save Progress</button>
     </div>
   </div>
 </div>
@@ -1140,9 +1141,7 @@ async function submitForm() {
   });
   
   if (missing.length > 0) {
-    alert('Please fill in required fields:
-- ' + missing.join('
-- '));
+    alert('Please fill in required fields:\n- ' + missing.join('\n- '));
     return;
   }
 

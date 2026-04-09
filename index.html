@@ -1100,17 +1100,34 @@ function validateCurrentStep() {
   inputs.forEach(input => {
     if (input.value.trim() === '') {
       empty.push(input);
+      // Strong red highlight for empty fields
+      input.style.backgroundColor = '#FFEBEE';
       input.style.borderColor = '#C0392B';
-      input.style.borderWidth = '2px';
+      input.style.borderWidth = '3px';
+      input.style.borderStyle = 'solid';
+      
+      // Add red glow/shadow
+      input.style.boxShadow = '0 0 8px rgba(192, 57, 43, 0.5)';
+      
+      // Scroll to first empty field
+      if (empty.length === 1) {
+        setTimeout(() => {
+          input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          input.focus();
+        }, 100);
+      }
     } else {
+      // Clear highlighting for filled fields
+      input.style.backgroundColor = '';
       input.style.borderColor = '';
       input.style.borderWidth = '';
+      input.style.borderStyle = '';
+      input.style.boxShadow = '';
     }
   });
   
   if (empty.length > 0) {
-    alert('Please fill in all fields before proceeding to the next step.\n\n' + empty.length + ' field(s) remaining.');
-    empty[0].focus();
+    alert('⚠️ Missing Fields\n\n' + empty.length + ' field(s) need to be filled in.\n\nEmpty fields are now highlighted in RED.\n\nPlease scroll through and complete all highlighted fields.');
     return false;
   }
   
@@ -1183,16 +1200,53 @@ document.addEventListener('change', saveProgress);
 async function submitForm() {
   // Validate ALL fields before submission
   const allInputs = document.querySelectorAll('input[type="text"], input[type="email"], input[type="date"], textarea, select');
-  const empty = [];
+  const emptyFields = [];
+  let firstEmpty = null;
   
   allInputs.forEach(input => {
     if (input.value.trim() === '') {
-      empty.push(input.name || input.id || 'unnamed field');
+      emptyFields.push(input);
+      // Highlight ALL empty fields in red
+      input.style.backgroundColor = '#FFEBEE';
+      input.style.borderColor = '#C0392B';
+      input.style.borderWidth = '3px';
+      input.style.borderStyle = 'solid';
+      input.style.boxShadow = '0 0 8px rgba(192, 57, 43, 0.5)';
+      
+      if (!firstEmpty) firstEmpty = input;
+    } else {
+      // Clear any previous highlighting
+      input.style.backgroundColor = '';
+      input.style.borderColor = '';
+      input.style.borderWidth = '';
+      input.style.borderStyle = '';
+      input.style.boxShadow = '';
     }
   });
   
-  if (empty.length > 0) {
-    alert('Please complete all fields before submitting.\n\n' + empty.length + ' field(s) are still empty.\n\nGo back through each session and fill in all responses.');
+  if (emptyFields.length > 0) {
+    // Find which step has empty fields
+    let emptyStepNumbers = new Set();
+    emptyFields.forEach(field => {
+      for (let i = 0; i <= 4; i++) {
+        const stepEl = document.getElementById('step-' + i);
+        if (stepEl && stepEl.contains(field)) {
+          emptyStepNumbers.add(i);
+        }
+      }
+    });
+    
+    const stepNames = ['Contact Info', 'Session 1', 'Session 2', 'Session 3', 'Session 4'];
+    const emptySteps = Array.from(emptyStepNumbers).map(n => stepNames[n]).join(', ');
+    
+    alert('⚠️ Cannot Submit - Missing Fields\n\n' + emptyFields.length + ' field(s) are still empty in:\n' + emptySteps + '\n\nAll empty fields are now highlighted in RED with a red background.\n\nPlease go back through each session and complete all highlighted fields.');
+    
+    // Scroll to first empty field
+    if (firstEmpty) {
+      setTimeout(() => {
+        firstEmpty.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
+    }
     return;
   }
 

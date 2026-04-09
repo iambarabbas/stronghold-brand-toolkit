@@ -273,6 +273,20 @@
       padding: 11px 20px;
     }
     .btn-save:hover { background: var(--navy); opacity: 0.9; }
+
+    input, textarea, select {
+      border-left: 3px solid var(--gold);
+    }
+    input.filled, textarea.filled, select.filled {
+      border-left-color: var(--success);
+    }
+    .required-note {
+      font-size: 11px;
+      color: var(--mid-gray);
+      margin-top: 8px;
+      font-style: italic;
+    }
+
   </style>
 </head>
 <body>
@@ -350,6 +364,7 @@
       <div class="session-eyebrow">Session 1 of 4</div>
       <div class="session-title">Brand Foundation</div>
       <div class="session-desc">We establish who Stronghold is at its core — the mission, the model, what makes it different, and the emotional territory the brand owns.</div>
+      <p class="required-note">📝 All fields are required. Complete this session before moving forward.</p>
       <div class="session-meta">Duration: 90 minutes · Remote via Zoom or Google Meet</div>
     </div>
 
@@ -530,6 +545,7 @@
       <div class="session-eyebrow">Session 2 of 4</div>
       <div class="session-title">Visual Identity</div>
       <div class="session-desc">We define how Stronghold looks — colors, typography, photography direction, and the visual language that makes the brand instantly recognizable.</div>
+      <p class="required-note">📝 All fields are required. Complete this session before moving forward.</p>
       <div class="session-meta">Duration: 90 minutes · Remote via Zoom or Google Meet</div>
     </div>
 
@@ -646,6 +662,7 @@
       <div class="session-eyebrow">Session 3 of 4</div>
       <div class="session-title">Voice &amp; Tone</div>
       <div class="session-desc">We define how Stronghold sounds. The goal is a voice so specific that any team member can write a caption, email, or update and have it feel unmistakably like Stronghold.</div>
+      <p class="required-note">📝 All fields are required. Complete this session before moving forward.</p>
       <div class="session-meta">Duration: 90 minutes · Remote via Zoom or Google Meet</div>
     </div>
 
@@ -831,6 +848,7 @@
       <div class="session-eyebrow">Session 4 of 4</div>
       <div class="session-title">Content Strategy</div>
       <div class="session-desc">We define what Stronghold talks about, how often, and how to structure messages for different audiences and channels. This feeds directly into the Content Pillars Framework and Messaging Matrix.</div>
+      <p class="required-note">📝 All fields are required. Complete this session before moving forward.</p>
       <div class="session-meta">Duration: 90 minutes · Remote via Zoom or Google Meet</div>
     </div>
 
@@ -1064,7 +1082,40 @@ function showStep(n) {
   saveProgress();
 }
 
-function nextStep() { if (cur < 4) showStep(cur + 1); }
+function nextStep() {
+  // Validate current step before moving forward
+  if (!validateCurrentStep()) {
+    return;
+  }
+  if (cur < 4) showStep(cur + 1);
+}
+
+function validateCurrentStep() {
+  const currentStepEl = document.getElementById('step-' + cur);
+  if (!currentStepEl) return true;
+  
+  const inputs = currentStepEl.querySelectorAll('input[type="text"], input[type="email"], input[type="date"], textarea, select');
+  const empty = [];
+  
+  inputs.forEach(input => {
+    if (input.value.trim() === '') {
+      empty.push(input);
+      input.style.borderColor = '#C0392B';
+      input.style.borderWidth = '2px';
+    } else {
+      input.style.borderColor = '';
+      input.style.borderWidth = '';
+    }
+  });
+  
+  if (empty.length > 0) {
+    alert('Please fill in all fields before proceeding to the next step.\n\n' + empty.length + ' field(s) remaining.');
+    empty[0].focus();
+    return false;
+  }
+  
+  return true;
+}
 function prevStep() { if (cur > 0) showStep(cur - 1); }
 function goTo(n) { showStep(n); }
 
@@ -1130,18 +1181,18 @@ document.addEventListener('change', saveProgress);
 // Submit
 // ═══════════════════════════════════════════════════
 async function submitForm() {
-  // Validate required fields
-  const requiredFields = ['org_name', 'contact_name', 'contact_email'];
-  const missing = [];
-  requiredFields.forEach(field => {
-    const el = document.getElementById(field);
-    if (!el || !el.value.trim()) {
-      missing.push(field.replace(/_/g, ' '));
+  // Validate ALL fields before submission
+  const allInputs = document.querySelectorAll('input[type="text"], input[type="email"], input[type="date"], textarea, select');
+  const empty = [];
+  
+  allInputs.forEach(input => {
+    if (input.value.trim() === '') {
+      empty.push(input.name || input.id || 'unnamed field');
     }
   });
   
-  if (missing.length > 0) {
-    alert('Please fill in required fields:\n- ' + missing.join('\n- '));
+  if (empty.length > 0) {
+    alert('Please complete all fields before submitting.\n\n' + empty.length + ' field(s) are still empty.\n\nGo back through each session and fill in all responses.');
     return;
   }
 

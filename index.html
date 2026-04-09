@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stronghold Brand Workshop Toolkit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0B1D2E;
+      --gold: #C4A35A;
+      --steel: #1B4965;
+      --white: #FFFFFF;
+      --off-white: #F5F6F8;
+      --light-gray: #E4E8EE;
+      --mid-gray: #8A97A8;
+      --dark-gray: #4A5568;
+      --text: #1A2B3C;
+      --success: #2A7D46;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--off-white);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    .site-header { background: var(--navy); }
+    .header-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 24px 0;
+    }
+    .header-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .header-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .header-sub {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 28px;
+    }
+
+    /* ── Progress Nav ── */
+    .progress-nav {
+      display: flex;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .p-step {
+      flex: 1;
+      padding: 13px 6px;
+      text-align: center;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      border-bottom: 3px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s;
+      user-select: none;
+    }
+    .p-step:hover { color: rgba(255,255,255,0.7); }
+    .p-step.active { color: var(--gold); border-bottom-color: var(--gold); }
+    .p-step.done { color: rgba(255,255,255,0.5); border-bottom-color: rgba(255,255,255,0.15); }
+
+    /* ── Main ── */
+    .main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 24px 100px;
+    }
+
+    /* ── Step sections ── */
+    .step { display: none; }
+    .step.active { display: block; }
+
+    /* ── Session header card ── */
+    .session-hd {
+      background: var(--navy);
+      border-radius: 12px;
+      padding: 26px 30px;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+    .session-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .session-title {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 7px;
+    }
+    .session-desc { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.65; }
+    .session-meta { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 10px; }
+
+    /* ── Cards ── */
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 26px 30px;
+      margin-bottom: 18px;
+      border: 1px solid var(--light-gray);
+    }
+    .card.prework { background: var(--off-white); }
+    .card-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    .card-eyebrow.muted { color: var(--mid-gray); }
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .card-desc { font-size: 13px; color: var(--dark-gray); line-height: 1.65; margin-bottom: 20px; }
+
+    /* ── Form fields ── */
+    .fg { margin-bottom: 18px; }
+    .fg:last-child { margin-bottom: 0; }
+    label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 5px;
+    }
+    label .opt { font-weight: 400; color: var(--mid-gray); font-size: 11px; margin-left: 3px; }
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    input[type="number"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 9px 13px;
+      border: 1.5px solid var(--light-gray);
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: var(--text);
+      background: #fff;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      outline: none;
+      resize: vertical;
+    }
+    input:focus, textarea:focus { border-color: var(--steel); box-shadow: 0 0 0 3px rgba(27,73,101,0.09); }
+    textarea { min-height: 90px; line-height: 1.6; }
+    textarea.short { min-height: 68px; }
+    textarea.tall { min-height: 150px; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .field-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+
+    /* ── Voice Dials ── */
+    .dial { margin-bottom: 18px; }
+    .dial-label { font-size: 12px; font-weight: 600; color: var(--navy); margin-bottom: 9px; }
+    .dial-track { display: flex; align-items: center; gap: 10px; }
+    .dial-end { font-size: 11px; font-weight: 600; color: var(--dark-gray); min-width: 80px; line-height: 1.4; }
+    .dial-end.r { text-align: right; }
+    .dial-range { flex: 1; }
+    input[type="range"] {
+      width: 100%; -webkit-appearance: none; height: 4px;
+      background: linear-gradient(to right, var(--steel), var(--gold));
+      border-radius: 2px; outline: none; border: none; cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none; width: 18px; height: 18px;
+      border-radius: 50%; background: var(--navy);
+      border: 3px solid var(--gold); cursor: pointer;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    }
+    .dial-val { text-align: center; font-size: 11px; color: var(--mid-gray); margin-top: 3px; }
+
+    /* ── Pair rows (This But Not That) ── */
+    .pair-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 8px; align-items: center; margin-bottom: 10px; }
+    .pair-connector { font-size: 12px; font-weight: 500; color: var(--mid-gray); white-space: nowrap; text-align: center; }
+
+    /* ── Vote row ── */
+    .vote-wrap { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .vote-opt { text-align: center; }
+    .vote-opt label { font-size: 11px; font-weight: 600; color: var(--dark-gray); text-align: center; margin-bottom: 5px; }
+    .vote-opt input { text-align: center; }
+
+    /* ── Intro card ── */
+    .intro-title { font-size: 20px; font-weight: 800; color: var(--navy); margin-bottom: 10px; }
+    .intro-body { font-size: 14px; color: var(--dark-gray); line-height: 1.7; margin-bottom: 22px; }
+    .session-list { list-style: none; margin-bottom: 20px; }
+    .session-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 10px 0; border-bottom: 1px solid var(--light-gray);
+      font-size: 13px; color: var(--dark-gray);
+    }
+    .session-list li:last-child { border-bottom: none; }
+    .s-badge {
+      background: var(--navy); color: var(--gold);
+      font-size: 9px; font-weight: 700; padding: 3px 7px;
+      border-radius: 4px; letter-spacing: 0.05em;
+      white-space: nowrap; margin-top: 1px;
+    }
+
+    /* ── Footer bar ── */
+    .foot {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: #fff; border-top: 1px solid var(--light-gray);
+      padding: 14px 24px; z-index: 100;
+    }
+    .foot-inner {
+      max-width: 860px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .save-msg { font-size: 11px; color: var(--mid-gray); }
+    .save-msg.ok { color: var(--success); }
+    .btn-group { display: flex; gap: 10px; }
+    .btn {
+      padding: 10px 22px; border-radius: 8px;
+      font-family: 'Inter', sans-serif; font-size: 13px;
+      font-weight: 600; cursor: pointer; border: none;
+      transition: all 0.15s;
+    }
+    .btn-primary { background: var(--navy); color: #fff; }
+    .btn-primary:hover { background: var(--steel); }
+    .btn-secondary { background: transparent; color: var(--navy); border: 1.5px solid var(--light-gray); }
+    .btn-secondary:hover { border-color: var(--navy); }
+    .btn-gold { background: var(--gold); color: var(--navy); font-size: 15px; padding: 14px 36px; }
+    .btn-gold:hover { background: #D4B36A; }
+
+    /* ── Submit block ── */
+    .submit-block { text-align: center; padding: 40px 30px; }
+    .submit-icon { font-size: 40px; margin-bottom: 14px; }
+    .submit-title { font-size: 19px; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
+    .submit-body { font-size: 13px; color: var(--dark-gray); line-height: 1.7; margin-bottom: 24px; }
+    #submit-status { margin-top: 14px; font-size: 13px; color: var(--mid-gray); }
+
+    /* ── Responsive ── */
+    @media (max-width: 580px) {
+      .field-row, .field-row-3, .vote-wrap { grid-template-columns: 1fr; }
+      .pair-row { grid-template-columns: 1fr; }
+      .pair-connector { display: none; }
+      .header-title { font-size: 21px; }
+      .main { padding: 20px 16px 100px; }
+      .card, .session-hd { padding: 18px; }
+    }
+  
+    .btn-save {
+      background: var(--steel);
+      color: white;
+      margin-left: 12px;
+      font-size: 13px;
+      padding: 11px 20px;
+    }
+    .btn-save:hover { background: var(--navy); opacity: 0.9; }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════ HEADER ════════════════════════════ -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-eyebrow">Indigo Tones × Stronghold Rescue &amp; Relief</div>
+    <h1 class="header-title">Brand Workshop Toolkit</h1>
+    <p class="header-sub">4 Sessions · Brand Foundation · Visual Identity · Voice &amp; Tone · Content Strategy</p>
+  </div>
+  <nav class="progress-nav" style="padding: 0 24px;">
+    <div class="p-step active" onclick="goTo(0)" data-s="0">Start</div>
+    <div class="p-step" onclick="goTo(1)" data-s="1">Session 1</div>
+    <div class="p-step" onclick="goTo(2)" data-s="2">Session 2</div>
+    <div class="p-step" onclick="goTo(3)" data-s="3">Session 3</div>
+    <div class="p-step" onclick="goTo(4)" data-s="4">Session 4</div>
+  </nav>
+</header>
+
+<!-- ════════════════════════════ MAIN ════════════════════════════ -->
+<main class="main">
+
+  <!-- ─── STEP 0: Getting Started ─── -->
+  <div class="step active" id="step-0">
+    <div class="card">
+      <h2 class="intro-title">Welcome to your Brand Workshop</h2>
+      <p class="intro-body">
+        This toolkit guides you through building the Stronghold brand system across four sessions.
+        Your responses feed directly into the full Brand Package — the Brand Foundation Doc, Brand Book,
+        Voice &amp; Tone Guide, Messaging Matrix, and Content Pillars Framework.
+        Complete each session at your own pace. Progress saves automatically in your browser.
+      </p>
+      <ul class="session-list">
+        <li><span class="s-badge">S1</span><span><strong>Brand Foundation</strong> — Mission, pillars, origin story, and the Stronghold motto</span></li>
+        <li><span class="s-badge">S2</span><span><strong>Visual Identity</strong> — Colors, typography, photography direction, and mood</span></li>
+        <li><span class="s-badge">S3</span><span><strong>Voice &amp; Tone</strong> — How Stronghold sounds across every channel and context</span></li>
+        <li><span class="s-badge">S4</span><span><strong>Content Strategy</strong> — What to say, to whom, how often, and how to capture it in the field</span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Your Information</div>
+      <div style="margin-bottom:20px;"></div>
+      <div class="field-row">
+        <div class="fg">
+          <label for="org_name">Organization Name</label>
+          <input type="text" id="org_name" name="org_name" placeholder="Stronghold Rescue &amp; Relief">
+        </div>
+        <div class="fg">
+          <label for="contact_name">Your Name</label>
+          <input type="text" id="contact_name" name="contact_name" placeholder="Full name">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="fg">
+          <label for="contact_role">Your Role / Title</label>
+          <input type="text" id="contact_role" name="contact_role" placeholder="e.g. Executive Director">
+        </div>
+        <div class="fg">
+          <label for="contact_email">Email Address</label>
+          <input type="email" id="contact_email" name="contact_email" placeholder="you@org.com">
+        </div>
+      </div>
+      <div class="fg">
+        <label for="submission_date">Date</label>
+        <input type="date" id="submission_date" name="submission_date" style="max-width:200px;">
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── STEP 1: Session 1 — Brand Foundation ─── -->
+  <div class="step" id="step-1">
+    <div class="session-hd">
+      <div class="session-eyebrow">Session 1 of 4</div>
+      <div class="session-title">Brand Foundation</div>
+      <div class="session-desc">We establish who Stronghold is at its core — the mission, the model, what makes it different, and the emotional territory the brand owns.</div>
+      <div class="session-meta">Duration: 90 minutes · Remote via Zoom or Google Meet</div>
+    </div>
+
+    <!-- Pre-Work -->
+    <div class="card prework">
+      <div class="card-eyebrow muted">Pre-Work — Complete Before the Session</div>
+      <div class="card-title">Individual Prep</div>
+      <div class="card-desc">Answer these independently before joining. Sessions without pre-work completed will run long and produce weaker outputs.</div>
+      <div class="fg">
+        <label for="s1_pre_moment">What is one moment that defines what Stronghold stands for? <span class="opt">(3–5 sentences)</span></label>
+        <textarea id="s1_pre_moment" name="s1_pre_moment" placeholder="Describe a specific moment or experience that captures the essence of what Stronghold is..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s1_pre_explain">How do you explain Stronghold to someone who has never heard of it? <span class="opt">(plain language)</span></label>
+        <textarea id="s1_pre_explain" name="s1_pre_explain" class="short" placeholder="Write it out the way you would actually say it in conversation..."></textarea>
+      </div>
+    </div>
+
+    <!-- Warm-Up -->
+    <div class="card">
+      <div class="card-eyebrow">Warm-Up · 5 min</div>
+      <div class="card-title">2 Words</div>
+      <div class="card-desc">Describe Stronghold in exactly 2 words — no explanation, no hedging. First instinct only. Go around the room, read them out loud, and note recurring words. Recurring words become the brand.</div>
+      <div class="fg">
+        <label for="s1_warmup">Your 2 words for Stronghold:</label>
+        <input type="text" id="s1_warmup" name="s1_warmup" placeholder="e.g.  Relentless. Dignified.">
+      </div>
+    </div>
+
+    <!-- 1.1 -->
+    <div class="card">
+      <div class="card-eyebrow">Exercise 1.1 · 15 min</div>
+      <div class="card-title">The One Sentence</div>
+      <div class="card-desc">If you had 10 seconds to explain Stronghold to a stranger, what would you say? Each person writes independently, then share and compare. Find the recurring elements and build a combined version.</div>
+      <div class="fg">
+        <label for="s1_1_p1">Person 1 — one-sentence explanation:</label>
+        <textarea id="s1_1_p1" name="s1_1_p1" class="short" placeholder="..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s1_1_p2">Person 2 — one-sentence explanation:</label>
+        <textarea id="s1_1_p2" name="s1_1_p2" class="short" placeholder="..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s1_1_p3">Person 3 — one-sentence explanation: <span class="opt">(if applicable)</span></label>
+        <textarea id="s1_1_p3" name="s1_1_p3" class="short" placeholder="..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s1_1_recurring">Recurring phrases identified across all versions:</label>
+        <input type="text" id="s1_1_recurring" name="s1_1_recurring" placeholder="e.g. dignity, direct, operators, field-first...">
+      </div>
+      <div class="fg">
+        <label for="s1_1_combined">Draft combined sentence (built from recurring elements):</label>
+        <textarea id="s1_1_combined" name="s1_1_combined" class="short" placeholder="The synthesized version the group agrees on..."></textarea>
+      </div>
+    </div>
+
+    <!-- 1.2 -->
+    <div class="card">
+      <div class="card-eyebrow">Exercise 1.2 · 15 min</div>
+      <div class="card-title">What We Are NOT</div>
+      <div class="card-desc">Define the brand by exclusion — what Stronghold refuses to be. List 3 organizations Stronghold is different from, explain how, then agree on 5 firm "We Are NOT" statements as a group.</div>
+      <div class="fg"><label for="s1_2_n1">We are NOT (1):</label><input type="text" id="s1_2_n1" name="s1_2_n1" placeholder="e.g. We are NOT a traditional charity that treats recipients as victims"></div>
+      <div class="fg"><label for="s1_2_n2">We are NOT (2):</label><input type="text" id="s1_2_n2" name="s1_2_n2" placeholder="..."></div>
+      <div class="fg"><label for="s1_2_n3">We are NOT (3):</label><input type="text" id="s1_2_n3" name="s1_2_n3" placeholder="..."></div>
+      <div class="fg"><label for="s1_2_n4">We are NOT (4):</label><input type="text" id="s1_2_n4" name="s1_2_n4" placeholder="..."></div>
+      <div class="fg"><label for="s1_2_n5">We are NOT (5):</label><input type="text" id="s1_2_n5" name="s1_2_n5" placeholder="..."></div>
+    </div>
+
+    <!-- 1.3 -->
+    <div class="card">
+      <div class="card-eyebrow">Exercise 1.3 · 20 min</div>
+      <div class="card-title">The Origin Story</div>
+      <div class="card-desc">Surface the founding moment and core conviction that makes Stronghold real. Tell the story of how Stronghold started — the specific moment the decision was made. Write the 3-sentence version together.</div>
+      <div class="fg">
+        <label for="s1_3_problem">The problem we saw:</label>
+        <textarea id="s1_3_problem" name="s1_3_problem" class="short" placeholder="What gap, failure, or injustice did you witness that made Stronghold necessary?"></textarea>
+      </div>
+      <div class="fg">
+        <label for="s1_3_conviction">The conviction we had:</label>
+        <textarea id="s1_3_conviction" name="s1_3_conviction" class="short" placeholder="What did you believe to be true that others weren't acting on?"></textarea>
+      </div>
+      <div class="fg">
+        <label for="s1_3_action">The first thing we did:</label>
+        <textarea id="s1_3_action" name="s1_3_action" class="short" placeholder="The specific first action taken..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s1_3_story">3-sentence origin story:</label>
+        <textarea id="s1_3_story" name="s1_3_story" placeholder="The polished 3-sentence version combining problem + conviction + first action..."></textarea>
+      </div>
+    </div>
+
+    <!-- 1.4 -->
+    <div class="card">
+      <div class="card-eyebrow">Exercise 1.4 · 20 min</div>
+      <div class="card-title">Brand Pillars Validation</div>
+      <div class="card-desc">Validate the four brand pillars from the Brand OS against the team's own experience. Vote for each: Confirmed / Partially / No — and note what's missing or what needs adjusting.</div>
+      <div class="fg">
+        <label for="s1_4_p1">Stories of Impact (48%) — team vote + notes:</label>
+        <textarea id="s1_4_p1" name="s1_4_p1" class="short" placeholder="Vote: Confirmed / Partially / No&#10;Notes: ..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s1_4_p2">Operator Credibility (43%) — team vote + notes:</label>
+        <textarea id="s1_4_p2" name="s1_4_p2" class="short" placeholder="Vote: Confirmed / Partially / No&#10;Notes: ..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s1_4_p3">Radical Transparency (55%) — team vote + notes:</label>
+        <textarea id="s1_4_p3" name="s1_4_p3" class="short" placeholder="Vote: Confirmed / Partially / No&#10;Notes: ..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s1_4_p4">Dignity &amp; Empowerment — team vote + notes:</label>
+        <textarea id="s1_4_p4" name="s1_4_p4" class="short" placeholder="Vote: Confirmed / Partially / No&#10;Notes: ..."></textarea>
+      </div>
+    </div>
+
+    <!-- 1.5 -->
+    <div class="card">
+      <div class="card-eyebrow">Exercise 1.5 · 20 min</div>
+      <div class="card-title">The Pivot Story</div>
+      <div class="card-desc">Write the narrative that explains Stronghold's evolution from tactical rescue to medical humanitarian work — as a natural continuation, not a hard pivot. Identify the constant, the change, and build the 3-act statement Ephraim can tell anywhere.</div>
+      <div class="fg">
+        <label for="s1_5_constant">The constant — what has never changed about Stronghold across all phases:</label>
+        <textarea id="s1_5_constant" name="s1_5_constant" class="short" placeholder="The mission core, the values, the commitment that's stayed the same throughout..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s1_5_evolution">The evolution — what changed, and why it makes the mission stronger:</label>
+        <textarea id="s1_5_evolution" name="s1_5_evolution" class="short" placeholder="How the focus shifted and why that was the right move..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s1_5_3act">3-act statement — "We started doing X. That taught us Y. Now we do Z."</label>
+        <textarea id="s1_5_3act" name="s1_5_3act" placeholder="We started doing...&#10;That taught us...&#10;Now we..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s1_5_podcast">How Ephraim says this in 30 seconds on a podcast — write it out word for word:</label>
+        <textarea id="s1_5_podcast" name="s1_5_podcast" placeholder="The short, punchy verbal version — the line that lands on Jocko or Lewis Howes..."></textarea>
+      </div>
+    </div>
+
+    <!-- 1.6 -->
+    <div class="card">
+      <div class="card-eyebrow">Exercise 1.6 · 15 min</div>
+      <div class="card-title">Our Motto</div>
+      <div class="card-desc">Agree on the single line that captures Stronghold's essence — the phrase Ephraim can say on any podcast, any stage, or any email and have it land perfectly. Three options from the Brand OS: "A Few Good Men" / "Charity With Dignity" / "We Run Toward the Fire."</div>
+      <div class="fg">
+        <label>Team votes — number of votes for each option:</label>
+        <div class="vote-wrap">
+          <div class="vote-opt">
+            <label for="s1_6_v1">A Few Good Men</label>
+            <input type="number" id="s1_6_v1" name="s1_6_v1" min="0" placeholder="0" style="text-align:center;">
+          </div>
+          <div class="vote-opt">
+            <label for="s1_6_v2">Charity With Dignity</label>
+            <input type="number" id="s1_6_v2" name="s1_6_v2" min="0" placeholder="0" style="text-align:center;">
+          </div>
+          <div class="vote-opt">
+            <label for="s1_6_v3">We Run Toward the Fire</label>
+            <input type="number" id="s1_6_v3" name="s1_6_v3" min="0" placeholder="0" style="text-align:center;">
+          </div>
+        </div>
+      </div>
+      <div class="fg">
+        <label for="s1_6_alts">Alternative options written during the session: <span class="opt">(if none felt right)</span></label>
+        <textarea id="s1_6_alts" name="s1_6_alts" class="short" placeholder="Any alternative phrases the group generated..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s1_6_chosen">The chosen motto:</label>
+        <input type="text" id="s1_6_chosen" name="s1_6_chosen" placeholder="The confirmed Stronghold motto">
+      </div>
+      <div class="fg">
+        <label for="s1_6_why">One sentence on why this is the right choice for where Stronghold is going:</label>
+        <textarea id="s1_6_why" name="s1_6_why" class="short" placeholder="Why this phrase and not the others..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── STEP 2: Session 2 — Visual Identity ─── -->
+  <div class="step" id="step-2">
+    <div class="session-hd">
+      <div class="session-eyebrow">Session 2 of 4</div>
+      <div class="session-title">Visual Identity</div>
+      <div class="session-desc">We define how Stronghold looks — colors, typography, photography direction, and the visual language that makes the brand instantly recognizable.</div>
+      <div class="session-meta">Duration: 90 minutes · Remote via Zoom or Google Meet</div>
+    </div>
+
+    <!-- Pre-Work -->
+    <div class="card prework">
+      <div class="card-eyebrow muted">Pre-Work — Complete Before the Session</div>
+      <div class="card-title">Visual Prep</div>
+      <div class="card-desc">Collect images, note brands you respect, and review the Brand OS color/typography before joining.</div>
+      <div class="fg">
+        <label for="s2_pre_images">10–15 images that feel like Stronghold — share a Google Drive link or describe what you collected:</label>
+        <textarea id="s2_pre_images" name="s2_pre_images" class="short" placeholder="Paste a Drive link or describe: field photos, real moments, team shots — no stock..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s2_pre_brands">3 brands whose visual identity you respect — and why <span class="opt">(not necessarily nonprofits)</span>:</label>
+        <textarea id="s2_pre_brands" name="s2_pre_brands" placeholder="Brand 1: [name] — because...&#10;Brand 2: [name] — because...&#10;Brand 3: [name] — because..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s2_pre_review">Notes from reviewing the color palette and typography in the Brand OS:</label>
+        <textarea id="s2_pre_review" name="s2_pre_review" class="short" placeholder="Anything that immediately felt right or wrong before the session..."></textarea>
+      </div>
+    </div>
+
+    <!-- 2.1 -->
+    <div class="card">
+      <div class="card-eyebrow">Exercise 2.1 · 20 min</div>
+      <div class="card-title">Image Sort</div>
+      <div class="card-desc">Screen-share the collected image folder. Each person picks their top 3 and explains why in one sentence. Group images by theme: Documentary / Operator / Community / Landscape. Note where there's the most agreement — that's your primary visual language.</div>
+      <div class="fg">
+        <label for="s2_1_agree">Images with most agreement:</label>
+        <textarea id="s2_1_agree" name="s2_1_agree" class="short" placeholder="Which images did everyone respond to? Describe them..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s2_1_cat">Primary visual category:</label>
+        <input type="text" id="s2_1_cat" name="s2_1_cat" placeholder="e.g. Documentary + Operator">
+      </div>
+      <div class="fg">
+        <label for="s2_1_common">What these images have in common:</label>
+        <textarea id="s2_1_common" name="s2_1_common" class="short" placeholder="The visual qualities that make them all feel like Stronghold..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s2_1_avoid">What we should NOT use:</label>
+        <textarea id="s2_1_avoid" name="s2_1_avoid" class="short" placeholder="Image styles, moods, or types to avoid..."></textarea>
+      </div>
+    </div>
+
+    <!-- 2.2 -->
+    <div class="card">
+      <div class="card-eyebrow">Exercise 2.2 · 20 min</div>
+      <div class="card-title">Color Palette Review</div>
+      <div class="card-desc">Walk through each color from the Brand OS: name, hex, role, and usage rule. Team votes: Confirmed / Adjust / Replace. Document any changes with reasoning.</div>
+      <div class="fg"><label for="s2_2_navy">Midnight Navy #0B1D2E — confirmed / adjust (notes):</label><input type="text" id="s2_2_navy" name="s2_2_navy" placeholder="Confirmed  ·  or  ·  Adjust: [what needs to change and why]"></div>
+      <div class="fg"><label for="s2_2_gold">Operator Gold #C4A35A — confirmed / adjust (notes):</label><input type="text" id="s2_2_gold" name="s2_2_gold" placeholder="Confirmed  ·  or  ·  Adjust: [what needs to change and why]"></div>
+      <div class="fg"><label for="s2_2_steel">Deep Steel #1B4965 — confirmed / adjust (notes):</label><input type="text" id="s2_2_steel" name="s2_2_steel" placeholder="Confirmed  ·  or  ·  Adjust: [what needs to change and why]"></div>
+      <div class="fg">
+        <label for="s2_2_add">Colors to add or replace:</label>
+        <textarea id="s2_2_add" name="s2_2_add" class="short" placeholder="Any colors that need to be added to or swapped in the palette..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s2_2_rules">Any usage rule disagreements:</label>
+        <textarea id="s2_2_rules" name="s2_2_rules" class="short" placeholder="e.g. Gold should be used more sparingly / Navy feels too dark for digital..."></textarea>
+      </div>
+    </div>
+
+    <!-- 2.3 -->
+    <div class="card">
+      <div class="card-eyebrow">Exercise 2.3 · 15 min</div>
+      <div class="card-title">Typography Gut Check</div>
+      <div class="card-desc">Review sample text using Inter Bold, Bebas Neue, and Libre Baskerville Italic. Key debate: Does Bebas Neue feel too military? Not enough? Confirm or identify an alternative.</div>
+      <div class="fg">
+        <label for="s2_3_headline">Hero headline font (Bebas Neue) — confirmed / alternative + reasoning:</label>
+        <textarea id="s2_3_headline" name="s2_3_headline" class="short" placeholder="Confirmed  ·  or  ·  Alternative: [name] — because..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s2_3_body">Body copy font (Inter Bold) — confirmed / alternative + reasoning:</label>
+        <textarea id="s2_3_body" name="s2_3_body" class="short" placeholder="Confirmed  ·  or  ·  Alternative: [name] — because..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s2_3_quote">Pull quote font (Libre Baskerville Italic) — confirmed / alternative + reasoning:</label>
+        <textarea id="s2_3_quote" name="s2_3_quote" class="short" placeholder="Confirmed  ·  or  ·  Alternative: [name] — because..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s2_3_notes">Overall typography feel — team notes:</label>
+        <textarea id="s2_3_notes" name="s2_3_notes" class="short" placeholder="General reactions, what feels right, what needs work..."></textarea>
+      </div>
+    </div>
+
+    <!-- 2.4 -->
+    <div class="card">
+      <div class="card-eyebrow">Exercise 2.4 · 15 min</div>
+      <div class="card-title">Photography Rules</div>
+      <div class="card-desc">Set firm rules for what Stronghold imagery does and does not look like. Review the DO / DON'T table from the Brand OS, then add rules specific to Stronghold's real operational situation.</div>
+      <div class="fg">
+        <label for="s2_4_add">Photography rules to add (beyond the Brand OS):</label>
+        <textarea id="s2_4_add" name="s2_4_add" placeholder="Additional DO and DON'T rules specific to Stronghold's work and context..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s2_4_ops">Operational constraints to note:</label>
+        <textarea id="s2_4_ops" name="s2_4_ops" class="short" placeholder="e.g. Active zone photography limitations, what can and can't be shown in the field..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s2_4_consent">Consent and security considerations:</label>
+        <textarea id="s2_4_consent" name="s2_4_consent" class="short" placeholder="Rules around consent for field subjects and security considerations for operators..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s2_4_treatment">Approved image treatment direction:</label>
+        <input type="text" id="s2_4_treatment" name="s2_4_treatment" placeholder="e.g. Slight desaturation, documentary grade — confirmed / adjusted to...">
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── STEP 3: Session 3 — Voice & Tone ─── -->
+  <div class="step" id="step-3">
+    <div class="session-hd">
+      <div class="session-eyebrow">Session 3 of 4</div>
+      <div class="session-title">Voice &amp; Tone</div>
+      <div class="session-desc">We define how Stronghold sounds. The goal is a voice so specific that any team member can write a caption, email, or update and have it feel unmistakably like Stronghold.</div>
+      <div class="session-meta">Duration: 90 minutes · Remote via Zoom or Google Meet</div>
+    </div>
+
+    <!-- Pre-Work -->
+    <div class="card prework">
+      <div class="card-eyebrow muted">Pre-Work — Complete Before the Session</div>
+      <div class="card-title">Content Prep</div>
+      <div class="card-desc">Pull 3 real pieces of Stronghold content, rate them, and write a paragraph in your own voice before joining.</div>
+      <div class="fg">
+        <label for="s3_pre_pieces">3 real pieces of Stronghold content you pulled — describe each briefly:</label>
+        <textarea id="s3_pre_pieces" name="s3_pre_pieces" placeholder="Piece 1 (Instagram caption): ...&#10;Piece 2 (Email): ...&#10;Piece 3 (Website paragraph): ..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s3_pre_ratings">Your 1–5 rating for each piece and a note on why:</label>
+        <textarea id="s3_pre_ratings" name="s3_pre_ratings" class="short" placeholder="Piece 1: [rating] — because...&#10;Piece 2: [rating] — because...&#10;Piece 3: [rating] — because..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s3_pre_voice">One paragraph describing a recent Stronghold moment — in your own voice, no editing:</label>
+        <textarea id="s3_pre_voice" name="s3_pre_voice" placeholder="Just write it. Don't edit. Don't overthink it. Go."></textarea>
+      </div>
+    </div>
+
+    <!-- 3.1 -->
+    <div class="card">
+      <div class="card-eyebrow">Exercise 3.1 · 20 min</div>
+      <div class="card-title">Content Audit</div>
+      <div class="card-desc">Screen-share the 3 content pieces. Read each aloud, rate it 1–5, identify what's working and what's off. Note patterns — is it too formal? Too casual? Too generic?</div>
+      <div class="fg">
+        <label for="s3_1_p1">Content piece 1 — rating + what's working and what's off:</label>
+        <textarea id="s3_1_p1" name="s3_1_p1" class="short" placeholder="Rating: [1–5]&#10;What's working: ...&#10;What's off: ..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s3_1_p2">Content piece 2 — rating + what's working and what's off:</label>
+        <textarea id="s3_1_p2" name="s3_1_p2" class="short" placeholder="Rating: [1–5]&#10;What's working: ...&#10;What's off: ..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s3_1_p3">Content piece 3 — rating + what's working and what's off:</label>
+        <textarea id="s3_1_p3" name="s3_1_p3" class="short" placeholder="Rating: [1–5]&#10;What's working: ...&#10;What's off: ..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s3_1_patterns">Common patterns across all three — the consistent problems you're seeing:</label>
+        <textarea id="s3_1_patterns" name="s3_1_patterns" class="short" placeholder="Is it too formal? Too casual? Too generic? What's the recurring issue?"></textarea>
+      </div>
+    </div>
+
+    <!-- 3.2 -->
+    <div class="card">
+      <div class="card-eyebrow">Exercise 3.2 · 15 min</div>
+      <div class="card-title">Voice Dial Calibration</div>
+      <div class="card-desc">Set the exact position on each voice dimension for Stronghold. Use specific content examples to justify your position. Move the sliders to reflect where the team lands.</div>
+
+      <div class="dial">
+        <div class="dial-label">Formal ←→ Casual</div>
+        <div class="dial-track">
+          <div class="dial-end">Formal<br><small style="font-weight:400;color:var(--mid-gray);">1</small></div>
+          <div class="dial-range">
+            <input type="range" id="s3_2_d1" name="s3_2_d1" min="1" max="5" value="3" oninput="updDial('s3_2_d1')">
+            <div class="dial-val" id="s3_2_d1_lbl">3</div>
+          </div>
+          <div class="dial-end r">Casual<br><small style="font-weight:400;color:var(--mid-gray);">5</small></div>
+        </div>
+      </div>
+
+      <div class="dial">
+        <div class="dial-label">Polished ←→ Raw</div>
+        <div class="dial-track">
+          <div class="dial-end">Polished<br><small style="font-weight:400;color:var(--mid-gray);">1</small></div>
+          <div class="dial-range">
+            <input type="range" id="s3_2_d2" name="s3_2_d2" min="1" max="5" value="3" oninput="updDial('s3_2_d2')">
+            <div class="dial-val" id="s3_2_d2_lbl">3</div>
+          </div>
+          <div class="dial-end r">Raw<br><small style="font-weight:400;color:var(--mid-gray);">5</small></div>
+        </div>
+      </div>
+
+      <div class="dial">
+        <div class="dial-label">Corporate ←→ Personal</div>
+        <div class="dial-track">
+          <div class="dial-end">Corporate<br><small style="font-weight:400;color:var(--mid-gray);">1</small></div>
+          <div class="dial-range">
+            <input type="range" id="s3_2_d3" name="s3_2_d3" min="1" max="5" value="3" oninput="updDial('s3_2_d3')">
+            <div class="dial-val" id="s3_2_d3_lbl">3</div>
+          </div>
+          <div class="dial-end r">Personal<br><small style="font-weight:400;color:var(--mid-gray);">5</small></div>
+        </div>
+      </div>
+
+      <div class="dial">
+        <div class="dial-label">Cautious ←→ Bold</div>
+        <div class="dial-track">
+          <div class="dial-end">Cautious<br><small style="font-weight:400;color:var(--mid-gray);">1</small></div>
+          <div class="dial-range">
+            <input type="range" id="s3_2_d4" name="s3_2_d4" min="1" max="5" value="3" oninput="updDial('s3_2_d4')">
+            <div class="dial-val" id="s3_2_d4_lbl">3</div>
+          </div>
+          <div class="dial-end r">Bold<br><small style="font-weight:400;color:var(--mid-gray);">5</small></div>
+        </div>
+      </div>
+
+      <div class="dial">
+        <div class="dial-label">Institutional ←→ Insurgent</div>
+        <div class="dial-track">
+          <div class="dial-end">Institutional<br><small style="font-weight:400;color:var(--mid-gray);">1</small></div>
+          <div class="dial-range">
+            <input type="range" id="s3_2_d5" name="s3_2_d5" min="1" max="5" value="3" oninput="updDial('s3_2_d5')">
+            <div class="dial-val" id="s3_2_d5_lbl">3</div>
+          </div>
+          <div class="dial-end r">Insurgent<br><small style="font-weight:400;color:var(--mid-gray);">5</small></div>
+        </div>
+      </div>
+
+      <div class="fg" style="margin-top:16px;">
+        <label for="s3_2_notes">Notes on dial settings — what content examples justify your positions:</label>
+        <textarea id="s3_2_notes" name="s3_2_notes" class="short" placeholder="e.g. We landed at 4 on Bold because of the podcast clips where Ephraim is most direct..."></textarea>
+      </div>
+    </div>
+
+    <!-- 3.3 -->
+    <div class="card">
+      <div class="card-eyebrow">Exercise 3.3 · 25 min</div>
+      <div class="card-title">Before &amp; After Rewrites</div>
+      <div class="card-desc">Prove the voice in practice by rewriting real content together — a website paragraph, a donation ask, and an Instagram caption. Apply the confirmed voice principles live.</div>
+      <div class="fg">
+        <label for="s3_3_web_orig">Website paragraph — original version:</label>
+        <textarea id="s3_3_web_orig" name="s3_3_web_orig" placeholder="Paste the original paragraph from the current Stronghold website..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s3_3_web_new">Website paragraph — rewrite:</label>
+        <textarea id="s3_3_web_new" name="s3_3_web_new" placeholder="The rewritten version applying the confirmed voice principles..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s3_3_donation">Donation ask — rewrite:</label>
+        <textarea id="s3_3_donation" name="s3_3_donation" placeholder="How Stronghold asks for support, in the confirmed voice..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s3_3_caption">Instagram caption — rewrite:</label>
+        <textarea id="s3_3_caption" name="s3_3_caption" class="short" placeholder="A caption the team agrees sounds unmistakably like Stronghold..."></textarea>
+      </div>
+    </div>
+
+    <!-- 3.4 -->
+    <div class="card">
+      <div class="card-eyebrow">Exercise 3.4 · 15 min</div>
+      <div class="card-title">Language Rules</div>
+      <div class="card-desc">Build the definitive list of words Stronghold uses and words it never uses. Start with the Brand OS rules — review, add, adjust, and document the final approved list.</div>
+      <div class="fg">
+        <label for="s3_4_approved">Words / phrases to ADD to the approved list:</label>
+        <textarea id="s3_4_approved" name="s3_4_approved" class="short" placeholder="e.g. operator, field, direct, mission, boots on the ground..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s3_4_neveruse">Words / phrases to ADD to the never-use list:</label>
+        <textarea id="s3_4_neveruse" name="s3_4_neveruse" class="short" placeholder="e.g. impactful, giving back, empower (generic use), synergy, stakeholders..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s3_4_adjust">Rules to adjust from the Brand OS:</label>
+        <textarea id="s3_4_adjust" name="s3_4_adjust" class="short" placeholder="Any existing rules that need updating based on what the team discovered..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s3_4_terms">Stronghold-specific terms to define:</label>
+        <textarea id="s3_4_terms" name="s3_4_terms" class="short" placeholder="Terms unique to Stronghold's work that need a clear definition for content use..."></textarea>
+      </div>
+    </div>
+
+    <!-- 3.5 -->
+    <div class="card">
+      <div class="card-eyebrow">Exercise 3.5 · 15 min</div>
+      <div class="card-title">This But Not That</div>
+      <div class="card-desc">Define the brand through opposites — pairs of words that set the exact boundaries of the Stronghold voice. Aim for 8–10 pairs. Go fast, don't overthink, first instinct wins. These go directly into the Voice Guide.</div>
+      <div class="pair-row"><input type="text" name="s3_5_1a" placeholder="Stronghold is..."><div class="pair-connector">but not</div><input type="text" name="s3_5_1b" placeholder="..."></div>
+      <div class="pair-row"><input type="text" name="s3_5_2a" placeholder="Stronghold is..."><div class="pair-connector">but not</div><input type="text" name="s3_5_2b" placeholder="..."></div>
+      <div class="pair-row"><input type="text" name="s3_5_3a" placeholder="Stronghold is..."><div class="pair-connector">but not</div><input type="text" name="s3_5_3b" placeholder="..."></div>
+      <div class="pair-row"><input type="text" name="s3_5_4a" placeholder="Stronghold is..."><div class="pair-connector">but not</div><input type="text" name="s3_5_4b" placeholder="..."></div>
+      <div class="pair-row"><input type="text" name="s3_5_5a" placeholder="Stronghold is..."><div class="pair-connector">but not</div><input type="text" name="s3_5_5b" placeholder="..."></div>
+      <div class="pair-row"><input type="text" name="s3_5_6a" placeholder="Stronghold is..."><div class="pair-connector">but not</div><input type="text" name="s3_5_6b" placeholder="..."></div>
+      <div class="pair-row"><input type="text" name="s3_5_7a" placeholder="Stronghold is..."><div class="pair-connector">but not</div><input type="text" name="s3_5_7b" placeholder="..."></div>
+      <div class="pair-row" style="margin-bottom:0;"><input type="text" name="s3_5_8a" placeholder="Stronghold is..."><div class="pair-connector">but not</div><input type="text" name="s3_5_8b" placeholder="..."></div>
+    </div>
+  </div>
+
+  <!-- ─── STEP 4: Session 4 — Content Strategy ─── -->
+  <div class="step" id="step-4">
+    <div class="session-hd">
+      <div class="session-eyebrow">Session 4 of 4</div>
+      <div class="session-title">Content Strategy</div>
+      <div class="session-desc">We define what Stronghold talks about, how often, and how to structure messages for different audiences and channels. This feeds directly into the Content Pillars Framework and Messaging Matrix.</div>
+      <div class="session-meta">Duration: 90 minutes · Remote via Zoom or Google Meet</div>
+    </div>
+
+    <!-- Pre-Work -->
+    <div class="card prework">
+      <div class="card-eyebrow muted">Pre-Work — Complete Before the Session</div>
+      <div class="card-title">Content Audit Prep</div>
+      <div class="card-desc">Review your last 30 days of Instagram, list the questions your supporters ask most, and inventory your story types before joining.</div>
+      <div class="fg">
+        <label for="s4_pre_ig">Topics covered in your last 30 days of Instagram posts:</label>
+        <textarea id="s4_pre_ig" name="s4_pre_ig" class="short" placeholder="List the topics and rough frequency of each..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s4_pre_q">Top 3 questions your supporters ask most often:</label>
+        <textarea id="s4_pre_q" name="s4_pre_q" class="short" placeholder="1. ...&#10;2. ...&#10;3. ..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s4_pre_stories">3 story types you have in abundance + 3 you struggle to produce:</label>
+        <textarea id="s4_pre_stories" name="s4_pre_stories" placeholder="Have in abundance: 1. / 2. / 3.&#10;Struggle to produce: 1. / 2. / 3."></textarea>
+      </div>
+    </div>
+
+    <!-- Warm-Up -->
+    <div class="card">
+      <div class="card-eyebrow">Warm-Up · 10 min</div>
+      <div class="card-title">The Villain</div>
+      <div class="card-desc">Every strong brand has a villain — not a competitor, but the thing they exist to fight against. Aid dependency? Bureaucracy that moves too slow while people die? Donor guilt culture? The idea that charity should feel like sacrifice? Each person names one. The villain that gets the most energy in the room IS the villain.</div>
+      <div class="fg">
+        <label for="s4_villain">Stronghold's villain — the thing the brand exists to fight against:</label>
+        <textarea id="s4_villain" name="s4_villain" class="short" placeholder="Name it clearly. The villain that got the most energy in the room..."></textarea>
+      </div>
+    </div>
+
+    <!-- 4.1 -->
+    <div class="card">
+      <div class="card-eyebrow">Exercise 4.1 · 20 min</div>
+      <div class="card-title">Content Reality Check</div>
+      <div class="card-desc">Map what Stronghold actually produces vs. what the brand strategy calls for. Review the last 30 days of Instagram, calculate the actual % mix vs. the target, and identify the gaps.</div>
+      <div class="fg">
+        <label for="s4_1_mix">Actual content mix (last 30 days) — approximate % by pillar type:</label>
+        <textarea id="s4_1_mix" name="s4_1_mix" class="short" placeholder="Stories of Impact: ~__%&#10;Operator Credibility: ~__%&#10;Radical Transparency: ~__%&#10;Dignity & Empowerment: ~__%"></textarea>
+      </div>
+      <div class="fg">
+        <label for="s4_1_gap">Biggest gap vs. the target mix — what's over-indexed or barely present:</label>
+        <textarea id="s4_1_gap" name="s4_1_gap" class="short" placeholder="What's missing and what's overused?"></textarea>
+      </div>
+      <div class="fg">
+        <label for="s4_1_easy">Easiest content type to add right now:</label>
+        <input type="text" id="s4_1_easy" name="s4_1_easy" placeholder="The one addition that would have the highest impact...">
+      </div>
+      <div class="fg">
+        <label for="s4_1_hard">Hardest content type to produce and why:</label>
+        <textarea id="s4_1_hard" name="s4_1_hard" class="short" placeholder="What's missing and what makes it difficult to create..."></textarea>
+      </div>
+    </div>
+
+    <!-- 4.2 -->
+    <div class="card">
+      <div class="card-eyebrow">Exercise 4.2 · 25 min</div>
+      <div class="card-title">Audience Messaging Matrix</div>
+      <div class="card-desc">Define the key message for each audience type. For each segment: what is the one thing they need to believe to take action? Write the core message in 1–2 sentences.</div>
+      <div class="fg">
+        <label for="s4_2_a1">Audience 1 — New Visitors: core message (1–2 sentences):</label>
+        <textarea id="s4_2_a1" name="s4_2_a1" class="short" placeholder="The one thing a new visitor needs to believe to take their first action..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s4_2_a2">Audience 2 — Existing Supporters: core message (1–2 sentences):</label>
+        <textarea id="s4_2_a2" name="s4_2_a2" class="short" placeholder="The one thing that keeps existing supporters engaged and deepens commitment..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s4_2_a3">Audience 3 — Grants / Institutional: core message (1–2 sentences):</label>
+        <textarea id="s4_2_a3" name="s4_2_a3" class="short" placeholder="The one thing grant-makers and institutional funders need to believe..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s4_2_a4">Audience 4 — Media / Podcasts: core message (1–2 sentences):</label>
+        <textarea id="s4_2_a4" name="s4_2_a4" class="short" placeholder="The one thing that makes Stronghold a compelling story for media and podcasters..."></textarea>
+      </div>
+    </div>
+
+    <!-- 4.3 -->
+    <div class="card">
+      <div class="card-eyebrow">Exercise 4.3 · 20 min</div>
+      <div class="card-title">Story Bank Categories</div>
+      <div class="card-desc">Build the story capture system so field content doesn't get lost. For each category: what's the minimum viable capture? Assign a team member and agree on where stories are stored before they reach Indigo Tones.</div>
+      <div class="fg">
+        <label for="s4_3_c1">Story category 1 — name + minimum viable capture method + who's responsible:</label>
+        <textarea id="s4_3_c1" name="s4_3_c1" class="short" placeholder="Category: [e.g. Field Updates]&#10;Capture: [e.g. Photo + 3 sentences]&#10;Responsible: [name/role]"></textarea>
+      </div>
+      <div class="fg">
+        <label for="s4_3_c2">Story category 2 — name + capture method + who's responsible:</label>
+        <textarea id="s4_3_c2" name="s4_3_c2" class="short" placeholder="Category: &#10;Capture: &#10;Responsible: "></textarea>
+      </div>
+      <div class="fg">
+        <label for="s4_3_c3">Story category 3 — name + capture method + who's responsible:</label>
+        <textarea id="s4_3_c3" name="s4_3_c3" class="short" placeholder="Category: &#10;Capture: &#10;Responsible: "></textarea>
+      </div>
+      <div class="fg">
+        <label for="s4_3_storage">Storage location + handoff process to Indigo Tones:</label>
+        <textarea id="s4_3_storage" name="s4_3_storage" class="short" placeholder="Where stories are stored (Google Drive, Dropbox, etc.) and how they reach the team..."></textarea>
+      </div>
+    </div>
+
+    <!-- 4.4 -->
+    <div class="card">
+      <div class="card-eyebrow">Exercise 4.4 · 15 min</div>
+      <div class="card-title">Channel Cadence Agreement</div>
+      <div class="card-desc">Lock in realistic content cadence the team can actually sustain. Recommended from the Brand OS: Instagram 4–5x/week, Email 1–2x/month, YouTube 1–2x/week. Reality-check against what's achievable right now — it can increase over time.</div>
+      <div class="field-row">
+        <div class="fg">
+          <label for="s4_4_ig">Achievable Instagram cadence:</label>
+          <input type="text" id="s4_4_ig" name="s4_4_ig" placeholder="e.g. 3x/week to start">
+        </div>
+        <div class="fg">
+          <label for="s4_4_email">Achievable email cadence:</label>
+          <input type="text" id="s4_4_email" name="s4_4_email" placeholder="e.g. 1x/month to start">
+        </div>
+      </div>
+      <div class="fg">
+        <label for="s4_4_best">Biggest opportunity channel — the one that will have the highest impact if executed consistently:</label>
+        <input type="text" id="s4_4_best" name="s4_4_best" placeholder="e.g. Instagram Reels / Email / YouTube">
+      </div>
+      <div class="fg">
+        <label for="s4_4_yt">YouTube starting point — first content type to commit to:</label>
+        <textarea id="s4_4_yt" name="s4_4_yt" class="short" placeholder="e.g. Short field debrief clips, 1x/week — 3–5 minutes, Ephraim to camera..."></textarea>
+      </div>
+    </div>
+
+    <!-- 4.5 -->
+    <div class="card">
+      <div class="card-eyebrow">Exercise 4.5 · 20 min</div>
+      <div class="card-title">Talking Points for the Field</div>
+      <div class="card-desc">Build the ready-to-use proof points, analogies, and phrases Ephraim and the team can deploy in any public-facing context — podcast, donor call, media interview, or stage. Use real numbers. Write the 90-second pitch word for word.</div>
+      <div class="fg">
+        <label for="s4_5_pp1">Core proof point 1 + analogy that makes it land for a civilian audience:</label>
+        <textarea id="s4_5_pp1" name="s4_5_pp1" class="short" placeholder="Proof point: [specific, undeniable fact with real numbers]&#10;Analogy: [comparison that makes it tangible]"></textarea>
+      </div>
+      <div class="fg">
+        <label for="s4_5_pp2">Core proof point 2 + analogy:</label>
+        <textarea id="s4_5_pp2" name="s4_5_pp2" class="short" placeholder="Proof point: &#10;Analogy: "></textarea>
+      </div>
+      <div class="fg">
+        <label for="s4_5_pp3">Core proof point 3 + analogy:</label>
+        <textarea id="s4_5_pp3" name="s4_5_pp3" class="short" placeholder="Proof point: &#10;Analogy: "></textarea>
+      </div>
+      <div class="fg">
+        <label for="s4_5_pitch">The 90-second podcast pitch — write it out fully, word for word:</label>
+        <textarea id="s4_5_pitch" name="s4_5_pitch" class="tall" placeholder="If Ephraim has 90 seconds at the start of a Jocko, Lewis Howes, or Fox interview to explain Stronghold's new direction — what does he say? Write it out word for word."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s4_5_ol1">One-liner 1 — under 15 words, quotable, clips well on social:</label>
+        <input type="text" id="s4_5_ol1" name="s4_5_ol1" placeholder="Short. Sharp. Unmistakably Stronghold.">
+      </div>
+      <div class="fg">
+        <label for="s4_5_ol2">One-liner 2:</label>
+        <input type="text" id="s4_5_ol2" name="s4_5_ol2" placeholder="...">
+      </div>
+      <div class="fg">
+        <label for="s4_5_ol3">One-liner 3:</label>
+        <input type="text" id="s4_5_ol3" name="s4_5_ol3" placeholder="...">
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <div class="card submit-block">
+      <div class="submit-icon">✓</div>
+      <div class="submit-title">All 4 sessions complete.</div>
+      <p class="submit-body">
+        When you submit, your responses go directly to the Indigo Tones team and are stored securely in a shared workspace.
+        This becomes the foundation for your entire Brand Package.
+      </p>
+      <button class="btn btn-gold" onclick="submitForm()">Submit to Indigo Tones</button>
+      <div id="submit-status"></div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ════════════════════════════ FOOTER NAV ════════════════════════════ -->
+<div class="foot">
+  <div class="foot-inner">
+    <div class="save-msg" id="save-msg">Progress saves automatically</div>
+    <div class="btn-group">
+      <button class="btn btn-secondary" id="btn-prev" style="display:none;" onclick="prevStep()">← Back</button>
+      <button class="btn btn-primary" id="btn-next" onclick="nextStep()">Start Session 1 →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════
+// CONFIGURATION
+// Replace with your Google Apps Script Web App URL after deploying
+// See: google-apps-script.js for deployment instructions
+// ═══════════════════════════════════════════════════
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mqegoroz';
+
+// ═══════════════════════════════════════════════════
+// Navigation
+// ═══════════════════════════════════════════════════
+let cur = 0;
+const NEXT_LABELS = [
+  'Start Session 1 →',
+  'Go to Session 2 →',
+  'Go to Session 3 →',
+  'Go to Session 4 →',
+  null
+];
+
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
+  document.getElementById('step-' + n).classList.add('active');
+
+  document.querySelectorAll('.p-step').forEach((el, i) => {
+    el.classList.remove('active', 'done');
+    if (i === n) el.classList.add('active');
+    else if (i < n) el.classList.add('done');
+  });
+
+  const prev = document.getElementById('btn-prev');
+  const next = document.getElementById('btn-next');
+  prev.style.display = n > 0 ? 'block' : 'none';
+  if (NEXT_LABELS[n]) {
+    next.style.display = 'block';
+    next.textContent = NEXT_LABELS[n];
+  } else {
+    next.style.display = 'none';
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  cur = n;
+  saveProgress();
+}
+
+function nextStep() { if (cur < 4) showStep(cur + 1); }
+function prevStep() { if (cur > 0) showStep(cur - 1); }
+function goTo(n) { showStep(n); }
+
+// ═══════════════════════════════════════════════════
+// Voice dials
+// ═══════════════════════════════════════════════════
+function updDial(id) {
+  const val = document.getElementById(id).value;
+  document.getElementById(id + '_lbl').textContent = val;
+  saveProgress();
+}
+
+// ═══════════════════════════════════════════════════
+// LocalStorage — Auto-save
+// ═══════════════════════════════════════════════════
+function allData() {
+  const d = {};
+  document.querySelectorAll('input[name], textarea[name]').forEach(el => {
+    d[el.name] = el.value;
+  });
+  d['__step'] = cur;
+  return d;
+}
+
+let saveTimer;
+function saveProgress() {
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => {
+    try {
+      localStorage.setItem('sh_toolkit', JSON.stringify(allData()));
+      const el = document.getElementById('save-msg');
+      el.textContent = 'Saved at ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      el.className = 'save-msg ok';
+      setTimeout(() => { el.textContent = 'Progress saves automatically'; el.className = 'save-msg'; }, 2500);
+    } catch(e) {}
+  }, 400);
+}
+
+function loadProgress() {
+  try {
+    const raw = localStorage.getItem('sh_toolkit');
+    if (!raw) return;
+    const d = JSON.parse(raw);
+    Object.keys(d).forEach(k => {
+      if (k === '__step') return;
+      const el = document.querySelector('[name="' + k + '"]');
+      if (!el) return;
+      el.value = d[k];
+      if (el.type === 'range') {
+        const lbl = document.getElementById(k + '_lbl');
+        if (lbl) lbl.textContent = d[k];
+      }
+    });
+    const step = parseInt(d['__step'] || 0);
+    if (step > 0) showStep(step);
+  } catch(e) {}
+}
+
+document.addEventListener('input', saveProgress);
+document.addEventListener('change', saveProgress);
+
+// ═══════════════════════════════════════════════════
+// Submit
+// ═══════════════════════════════════════════════════
+async function submitForm() {
+  // Validate required fields
+  const requiredFields = ['org_name', 'contact_name', 'contact_email'];
+  const missing = [];
+  requiredFields.forEach(field => {
+    const el = document.getElementById(field);
+    if (!el || !el.value.trim()) {
+      missing.push(field.replace(/_/g, ' '));
+    }
+  });
+  
+  if (missing.length > 0) {
+    alert('Please fill in required fields:
+- ' + missing.join('
+- '));
+    return;
+  }
+
+  const statusEl = document.getElementById('submit-status');
+  statusEl.style.color = 'var(--mid-gray)';
+  statusEl.textContent = 'Submitting your responses…';
+
+  const data = allData();
+  delete data['__step'];
+  data['submitted_at'] = new Date().toISOString();
+
+  // Convert to FormData for Formspree
+  const formData = new FormData();
+  Object.keys(data).forEach(key => {
+    if (data[key]) {
+      formData.append(key, data[key]);
+    }
+  });
+
+  try {
+    const response = await fetch(FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+    
+    if (response.ok) {
+      statusEl.style.color = 'var(--success)';
+      statusEl.textContent = '✓ Submitted successfully! The Indigo Tones team will be in touch shortly.';
+      try { localStorage.removeItem('sh_toolkit'); } catch(e) {}
+    } else {
+      throw new Error('Submission failed');
+    }
+  } catch(err) {
+    statusEl.style.color = '#C0392B';
+    statusEl.textContent = 'Submission failed. Please try again or email the Indigo Tones team directly.';
+    console.error('Submit error:', err);
+  }
+}
+
+// Manual save function
+function manualSave() {
+  saveProgress();
+  const btn = document.querySelector('.btn-save');
+  const original = btn.textContent;
+  btn.textContent = '✓ Saved';
+  btn.style.background = 'var(--success)';
+  setTimeout(() => {
+    btn.textContent = original;
+    btn.style.background = '';
+  }, 2000);
+}
+
+// ═══════════════════════════════════════════════════
+// Init
+// ═══════════════════════════════════════════════════
+const dateEl = document.getElementById('submission_date');
+if (dateEl && !dateEl.value) dateEl.value = new Date().toISOString().split('T')[0];
+loadProgress();
+</script>
+</body>
+</html>

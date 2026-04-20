@@ -644,10 +644,37 @@
     <div class="card">
       <div class="card-eyebrow">Exercise 2.1 · 20 min</div>
       <div class="card-title">Image Sort</div>
-      <div class="card-desc">Screen-share the collected image folder. Each person picks their top 3 and explains why in one sentence. Group images by theme: Documentary / Operator / Community / Landscape. Note where there's the most agreement: that's your primary visual language.</div>
+      
+      <h4 style="font-size: 15px; font-weight: 600; margin: 20px 0 12px; color: var(--navy);">Section A: Pre-Session Image Submission</h4>
+      <div class="card-desc" style="margin-bottom: 16px;">Each participant submits image URLs before the session. Google Drive links or direct web URLs both accepted.</div>
+      
+      <div class="fg">
+        <label for="s2_1_url1">Person 1 - Image URL:</label>
+        <input type="url" id="s2_1_url1" name="s2_1_url1" placeholder="https://drive.google.com/... or https://...">
+        <textarea id="s2_1_why1" name="s2_1_why1" class="short" style="margin-top: 8px;" placeholder="Why this feels like Stronghold..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s2_1_url2">Person 2 - Image URL:</label>
+        <input type="url" id="s2_1_url2" name="s2_1_url2" placeholder="https://drive.google.com/... or https://...">
+        <textarea id="s2_1_why2" name="s2_1_why2" class="short" style="margin-top: 8px;" placeholder="Why this feels like Stronghold..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s2_1_url3">Person 3 - Image URL:</label>
+        <input type="url" id="s2_1_url3" name="s2_1_url3" placeholder="https://drive.google.com/... or https://...">
+        <textarea id="s2_1_why3" name="s2_1_why3" class="short" style="margin-top: 8px;" placeholder="Why this feels like Stronghold..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s2_1_url4">Person 4 - Image URL:</label>
+        <input type="url" id="s2_1_url4" name="s2_1_url4" placeholder="https://drive.google.com/... or https://...">
+        <textarea id="s2_1_why4" name="s2_1_why4" class="short" style="margin-top: 8px;" placeholder="Why this feels like Stronghold..."></textarea>
+      </div>
+      
+      <h4 style="font-size: 15px; font-weight: 600; margin: 24px 0 12px; color: var(--navy);">Section B: Live Voting (During Session)</h4>
+      <div class="card-desc" style="margin-bottom: 16px;">Review all submitted images. For each, note the category and why it resonates (or doesn't).</div>
+      
       <div class="fg">
         <label for="s2_1_agree">Images with most agreement:</label>
-        <textarea id="s2_1_agree" name="s2_1_agree" class="short" placeholder="Which images did everyone respond to? Describe them..."></textarea>
+        <textarea id="s2_1_agree" name="s2_1_agree" class="short" placeholder="Which images did everyone respond to? Note the URL or description..."></textarea>
       </div>
       <div class="fg">
         <label for="s2_1_cat">Primary visual category:</label>
@@ -657,20 +684,55 @@
         <label for="s2_1_common">What these images have in common:</label>
         <textarea id="s2_1_common" name="s2_1_common" class="short" placeholder="The visual qualities that make them all feel like Stronghold..."></textarea>
       </div>
-      <div class="fg">
-        <label for="s2_1_avoid">What we should NOT use:</label>
-        <textarea id="s2_1_avoid" name="s2_1_avoid" class="short" placeholder="Image styles, moods, or types to avoid..."></textarea>
-      </div>
     </div>
 
     <!-- 2.2 -->
     <div class="card">
       <div class="card-eyebrow">Exercise 2.2 · 20 min</div>
       <div class="card-title">Color Palette Review</div>
-      <div class="card-desc">Walk through each color from the Brand OS: name, hex, role, and usage rule. Team votes: Confirmed / Adjust / Replace. Document any changes with reasoning.</div>
-      <div class="fg"><label for="s2_2_navy">Midnight Navy #0B1D2E: confirmed / adjust (notes):</label><input type="text" id="s2_2_navy" name="s2_2_navy" placeholder="Confirmed  ·  or  ·  Adjust: [what needs to change and why]"></div>
-      <div class="fg"><label for="s2_2_gold">Operator Gold #C4A35A: confirmed / adjust (notes):</label><input type="text" id="s2_2_gold" name="s2_2_gold" placeholder="Confirmed  ·  or  ·  Adjust: [what needs to change and why]"></div>
-      <div class="fg"><label for="s2_2_steel">Deep Steel #1B4965: confirmed / adjust (notes):</label><input type="text" id="s2_2_steel" name="s2_2_steel" placeholder="Confirmed  ·  or  ·  Adjust: [what needs to change and why]"></div>
+      <div class="card-desc">Walk through each color from the Brand OS: name, hex, role, and usage rule. Vote: Confirmed / Adjust / Replace. Document any changes with reasoning.</div>
+      
+      <div class="fg">
+        <label style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+          <span style="display: inline-block; width: 24px; height: 24px; background: #0B1D2E; border: 1px solid var(--border); border-radius: 4px;"></span>
+          <strong>Midnight Navy #0B1D2E</strong>
+        </label>
+        <select id="s2_2_navy" name="s2_2_navy" required style="margin-bottom: 8px;">
+          <option value="">Select...</option>
+          <option value="confirmed">Confirmed</option>
+          <option value="adjust">Adjust</option>
+          <option value="replace">Replace</option>
+        </select>
+        <textarea id="s2_2_navy_notes" name="s2_2_navy_notes" class="short" placeholder="What should change and why? (leave blank if confirmed)"></textarea>
+      </div>
+      
+      <div class="fg">
+        <label style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+          <span style="display: inline-block; width: 24px; height: 24px; background: #C4A35A; border: 1px solid var(--border); border-radius: 4px;"></span>
+          <strong>Operator Gold #C4A35A</strong>
+        </label>
+        <select id="s2_2_gold" name="s2_2_gold" required style="margin-bottom: 8px;">
+          <option value="">Select...</option>
+          <option value="confirmed">Confirmed</option>
+          <option value="adjust">Adjust</option>
+          <option value="replace">Replace</option>
+        </select>
+        <textarea id="s2_2_gold_notes" name="s2_2_gold_notes" class="short" placeholder="What should change and why? (leave blank if confirmed)"></textarea>
+      </div>
+      
+      <div class="fg">
+        <label style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+          <span style="display: inline-block; width: 24px; height: 24px; background: #1B4965; border: 1px solid var(--border); border-radius: 4px;"></span>
+          <strong>Deep Steel #1B4965</strong>
+        </label>
+        <select id="s2_2_steel" name="s2_2_steel" required style="margin-bottom: 8px;">
+          <option value="">Select...</option>
+          <option value="confirmed">Confirmed</option>
+          <option value="adjust">Adjust</option>
+          <option value="replace">Replace</option>
+        </select>
+        <textarea id="s2_2_steel_notes" name="s2_2_steel_notes" class="short" placeholder="What should change and why? (leave blank if confirmed)"></textarea>
+      </div>
       <div class="fg">
         <label for="s2_2_add">Colors to add or replace:</label>
         <textarea id="s2_2_add" name="s2_2_add" class="short" placeholder="Any colors that need to be added to or swapped in the palette..."></textarea>
@@ -687,16 +749,34 @@
       <div class="card-title">Typography Gut Check</div>
       <div class="card-desc">Review sample text using Inter Bold, Bebas Neue, and Libre Baskerville Italic. Key debate: Does Bebas Neue feel too military? Not enough? Confirm or identify an alternative.</div>
       <div class="fg">
-        <label for="s2_3_headline">Hero headline font (Bebas Neue): confirmed / alternative + reasoning:</label>
-        <textarea id="s2_3_headline" name="s2_3_headline" class="short" placeholder="Confirmed  ·  or  ·  Alternative: [name]: because..."></textarea>
+        <label for="s2_3_headline"><strong>Hero headline font (Bebas Neue)</strong></label>
+        <select id="s2_3_headline" name="s2_3_headline" required style="margin-bottom: 8px;">
+          <option value="">Select...</option>
+          <option value="confirmed">Confirmed</option>
+          <option value="adjust">Adjust</option>
+          <option value="replace">Replace</option>
+        </select>
+        <textarea id="s2_3_headline_notes" name="s2_3_headline_notes" class="short" placeholder="What should change and why? Alternative font name? (leave blank if confirmed)"></textarea>
       </div>
       <div class="fg">
-        <label for="s2_3_body">Body copy font (Inter Bold): confirmed / alternative + reasoning:</label>
-        <textarea id="s2_3_body" name="s2_3_body" class="short" placeholder="Confirmed  ·  or  ·  Alternative: [name]: because..."></textarea>
+        <label for="s2_3_body"><strong>Body copy font (Inter Bold)</strong></label>
+        <select id="s2_3_body" name="s2_3_body" required style="margin-bottom: 8px;">
+          <option value="">Select...</option>
+          <option value="confirmed">Confirmed</option>
+          <option value="adjust">Adjust</option>
+          <option value="replace">Replace</option>
+        </select>
+        <textarea id="s2_3_body_notes" name="s2_3_body_notes" class="short" placeholder="What should change and why? Alternative font name? (leave blank if confirmed)"></textarea>
       </div>
       <div class="fg">
-        <label for="s2_3_quote">Pull quote font (Libre Baskerville Italic): confirmed / alternative + reasoning:</label>
-        <textarea id="s2_3_quote" name="s2_3_quote" class="short" placeholder="Confirmed  ·  or  ·  Alternative: [name]: because..."></textarea>
+        <label for="s2_3_quote"><strong>Pull quote font (Libre Baskerville Italic)</strong></label>
+        <select id="s2_3_quote" name="s2_3_quote" required style="margin-bottom: 8px;">
+          <option value="">Select...</option>
+          <option value="confirmed">Confirmed</option>
+          <option value="adjust">Adjust</option>
+          <option value="replace">Replace</option>
+        </select>
+        <textarea id="s2_3_quote_notes" name="s2_3_quote_notes" class="short" placeholder="What should change and why? Alternative font name? (leave blank if confirmed)"></textarea>
       </div>
       <div class="fg">
         <label for="s2_3_notes">Overall typography feel: team notes:</label>
@@ -707,23 +787,81 @@
     <!-- 2.4 -->
     <div class="card">
       <div class="card-eyebrow">Exercise 2.4 · 15 min</div>
-      <div class="card-title">Photography Rules</div>
-      <div class="card-desc">Set firm rules for what Stronghold imagery does and does not look like. Review the DO / DON'T table from the Brand OS, then add rules specific to Stronghold's real operational situation.</div>
+      <div class="card-title">Visual Content Standards - What We Use and What We Don't</div>
+      <div class="card-desc">Set firm rules for what visual content is approved for use on Stronghold channels. This defines boundaries for dignity, security, and quality.</div>
+      
       <div class="fg">
-        <label for="s2_4_add">Photography rules to add (beyond the Brand OS):</label>
-        <textarea id="s2_4_add" name="s2_4_add" placeholder="Additional DO and DON'T rules specific to Stronghold's work and context..."></textarea>
+        <label for="s2_4_q1"><strong>1. Which content types are approved for use on the Stronghold website and social channels?</strong></label>
+        <div style="margin: 8px 0 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+          <label style="font-weight: normal;"><input type="checkbox" name="s2_4_types" value="field_photo" style="margin-right: 6px;"> Field photography</label>
+          <label style="font-weight: normal;"><input type="checkbox" name="s2_4_types" value="portrait" style="margin-right: 6px;"> Portrait</label>
+          <label style="font-weight: normal;"><input type="checkbox" name="s2_4_types" value="doc_video" style="margin-right: 6px;"> Documentary video</label>
+          <label style="font-weight: normal;"><input type="checkbox" name="s2_4_types" value="reels" style="margin-right: 6px;"> Short-form reels</label>
+          <label style="font-weight: normal;"><input type="checkbox" name="s2_4_types" value="gifs" style="margin-right: 6px;"> GIFs</label>
+          <label style="font-weight: normal;"><input type="checkbox" name="s2_4_types" value="infographics" style="margin-right: 6px;"> Infographics</label>
+          <label style="font-weight: normal;"><input type="checkbox" name="s2_4_types" value="stock" style="margin-right: 6px;"> Stock imagery</label>
+          <label style="font-weight: normal;"><input type="checkbox" name="s2_4_types" value="ai_gen" style="margin-right: 6px;"> AI-generated imagery</label>
+        </div>
+      </div>
+      
+      <div class="fg">
+        <label for="s2_4_q2"><strong>2. What are the rules for showing people - faces, identities, and communities - in Stronghold content?</strong></label>
+        <textarea id="s2_4_q2" name="s2_4_q2" placeholder="Consent requirements, dignity standards, how we protect identity..."></textarea>
+      </div>
+      
+      <div class="fg">
+        <label for="s2_4_q3"><strong>3. What restrictions apply to imagery featuring Stronghold operators, team members, or local partners?</strong></label>
+        <textarea id="s2_4_q3" name="s2_4_q3" class="short" placeholder="e.g. faces obscured, no location identifiers, no unit insignia..."></textarea>
+      </div>
+      
+      <div class="fg">
+        <label for="s2_4_q4"><strong>4. What is the minimum acceptable quality for field content used publicly?</strong></label>
+        <select id="s2_4_q4" name="s2_4_q4" required>
+          <option value="">Select...</option>
+          <option value="professional">Professional shoot only</option>
+          <option value="high_phone">High-quality phone acceptable</option>
+          <option value="raw_field">Raw field footage acceptable if the story warrants it</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      
+      <div class="fg">
+        <label for="s2_4_q5"><strong>5. Where is the line on graphic content?</strong> (e.g. medical procedures, injury imagery, conflict aftermath)</label>
+        <select id="s2_4_q5" name="s2_4_q5" required>
+          <option value="">Select...</option>
+          <option value="never">Never show</option>
+          <option value="with_warning">Show only with content warning</option>
+          <option value="if_dignified">Show if it serves the story and dignity is preserved</option>
+          <option value="no_restriction">Show without restriction</option>
+        </select>
+      </div>
+      
+      <h4 style="font-size: 15px; font-weight: 600; margin: 24px 0 12px; color: var(--navy);">DO - Visual content we actively want more of</h4>
+      <div class="fg">
+        <label for="s2_4_do1">DO #1:</label>
+        <input type="text" id="s2_4_do1" name="s2_4_do1" required placeholder="e.g. Close-up hands in action, medical procedures with consent">
       </div>
       <div class="fg">
-        <label for="s2_4_ops">Operational constraints to note:</label>
-        <textarea id="s2_4_ops" name="s2_4_ops" class="short" placeholder="e.g. Active zone photography limitations, what can and can't be shown in the field..."></textarea>
+        <label for="s2_4_do2">DO #2:</label>
+        <input type="text" id="s2_4_do2" name="s2_4_do2" required placeholder="...">
       </div>
       <div class="fg">
-        <label for="s2_4_consent">Consent and security considerations:</label>
-        <textarea id="s2_4_consent" name="s2_4_consent" class="short" placeholder="Rules around consent for field subjects and security considerations for operators..."></textarea>
+        <label for="s2_4_do3">DO #3:</label>
+        <input type="text" id="s2_4_do3" name="s2_4_do3" required placeholder="...">
+      </div>
+      
+      <h4 style="font-size: 15px; font-weight: 600; margin: 24px 0 12px; color: var(--navy);">DON'T - Visual content that is never acceptable for Stronghold channels</h4>
+      <div class="fg">
+        <label for="s2_4_dont1">DON'T #1:</label>
+        <input type="text" id="s2_4_dont1" name="s2_4_dont1" required placeholder="e.g. Stock photos that look staged or inauthentic">
       </div>
       <div class="fg">
-        <label for="s2_4_treatment">Approved image treatment direction:</label>
-        <input type="text" id="s2_4_treatment" name="s2_4_treatment" placeholder="e.g. Slight desaturation, documentary grade: confirmed / adjusted to...">
+        <label for="s2_4_dont2">DON'T #2:</label>
+        <input type="text" id="s2_4_dont2" name="s2_4_dont2" required placeholder="...">
+      </div>
+      <div class="fg">
+        <label for="s2_4_dont3">DON'T #3:</label>
+        <input type="text" id="s2_4_dont3" name="s2_4_dont3" required placeholder="...">
       </div>
     </div>
   </div>

@@ -412,10 +412,14 @@
     <div class="card">
       <div class="card-eyebrow">Warm-Up · 5 min</div>
       <div class="card-title">2 Words</div>
-      <div class="card-desc">Describe Stronghold in exactly 2 words: no explanation, no hedging. First instinct only. Go around the room, read them out loud, and note recurring words. Recurring words become the brand.</div>
+      <div class="card-desc">Write the two words that reflect what you personally believe Stronghold is, or what you believe it should become. Do not mirror what you think others in the room expect. First instinct only.</div>
       <div class="fg">
-        <label for="s1_warmup">Your 2 words for Stronghold:</label>
-        <input type="text" id="s1_warmup" name="s1_warmup" placeholder="e.g.  Relentless. Dignified.">
+        <label for="s1_warmup_word1">Word 1:</label>
+        <input type="text" id="s1_warmup_word1" name="s1_warmup_word1" placeholder="e.g. Relentless" maxlength="50">
+      </div>
+      <div class="fg">
+        <label for="s1_warmup_word2">Word 2:</label>
+        <input type="text" id="s1_warmup_word2" name="s1_warmup_word2" placeholder="e.g. Dignified" maxlength="50">
       </div>
     </div>
 
@@ -423,18 +427,10 @@
     <div class="card">
       <div class="card-eyebrow">Exercise 1.1 · 15 min</div>
       <div class="card-title">The One Sentence</div>
-      <div class="card-desc">If you had 10 seconds to explain Stronghold to a stranger, what would you say? Each person writes independently, then share and compare. Find the recurring elements and build a combined version.</div>
+      <div class="card-desc">If you had 10 seconds to explain Stronghold to a stranger, what would you say? Write your one-sentence explanation independently. As you listen to each person read their sentence aloud, note any recurring phrases or words in the Recurring Phrases field below. Once everyone has shared, take 5 minutes individually to write a new one-sentence version based on what you heard.</div>
       <div class="fg">
-        <label for="s1_1_p1">Person 1: one-sentence explanation:</label>
+        <label for="s1_1_p1">Your one-line explanation:</label>
         <textarea id="s1_1_p1" name="s1_1_p1" class="short" placeholder="..."></textarea>
-      </div>
-      <div class="fg">
-        <label for="s1_1_p2">Person 2: one-sentence explanation:</label>
-        <textarea id="s1_1_p2" name="s1_1_p2" class="short" placeholder="..."></textarea>
-      </div>
-      <div class="fg">
-        <label for="s1_1_p3">Person 3: one-sentence explanation: <span class="opt">(if applicable)</span></label>
-        <textarea id="s1_1_p3" name="s1_1_p3" class="short" placeholder="..."></textarea>
       </div>
       <div class="fg">
         <label for="s1_1_recurring">Recurring phrases identified across all versions:</label>
@@ -450,7 +446,7 @@
     <div class="card">
       <div class="card-eyebrow">Exercise 1.2 · 15 min</div>
       <div class="card-title">What We Are NOT</div>
-      <div class="card-desc">Define the brand by exclusion: what Stronghold refuses to be. List 3 organizations Stronghold is different from, explain how, then agree on 5 firm "We Are NOT" statements as a group.</div>
+      <div class="card-desc">This section defines the brand exclusion boundaries: what Stronghold refuses to be. Discuss 3 organizations Stronghold is different from, explain how, then write 5 firm "We Are NOT" statements.</div>
       <div class="fg"><label for="s1_2_n1">We are NOT (1):</label><input type="text" id="s1_2_n1" name="s1_2_n1" placeholder="e.g. We are NOT a traditional charity that treats recipients as victims"></div>
       <div class="fg"><label for="s1_2_n2">We are NOT (2):</label><input type="text" id="s1_2_n2" name="s1_2_n2" placeholder="..."></div>
       <div class="fg"><label for="s1_2_n3">We are NOT (3):</label><input type="text" id="s1_2_n3" name="s1_2_n3" placeholder="..."></div>
@@ -462,7 +458,7 @@
     <div class="card">
       <div class="card-eyebrow">Exercise 1.3 · 20 min</div>
       <div class="card-title">The Origin Story</div>
-      <div class="card-desc">Surface the founding moment and core conviction that makes Stronghold real. Tell the story of how Stronghold started: the specific moment the decision was made. Write the 3-sentence version together.</div>
+      <div class="card-desc">Surface the founding moment and core conviction that makes Stronghold real. Tell the story of how Stronghold started: the specific moment the decision was made. Answer the questions below, then write the 3-sentence version together.</div>
       <div class="fg">
         <label for="s1_3_problem">The problem we saw:</label>
         <textarea id="s1_3_problem" name="s1_3_problem" class="short" placeholder="What gap, failure, or injustice did you witness that made Stronghold necessary?"></textarea>
@@ -486,21 +482,72 @@
       <div class="card-eyebrow">Exercise 1.4 · 20 min</div>
       <div class="card-title">Brand Pillars Validation</div>
       <div class="card-desc">Validate the four brand pillars from the Brand OS against the team's own experience. Vote for each: Confirmed / Partially / No: and note what's missing or what needs adjusting.</div>
+      <!-- Pillar 1 -->
       <div class="fg">
-        <label for="s1_4_p1">Stories of Impact (48%): team vote + notes:</label>
-        <textarea id="s1_4_p1" name="s1_4_p1" class="short" placeholder="Vote: Confirmed / Partially / No&#10;Notes: ..."></textarea>
+        <label style="font-weight: 600; margin-bottom: 8px; display: block;">Stories of Impact (48%)</label>
+        <div style="margin-bottom: 12px;">
+          <label style="display: inline-flex; align-items: center; margin-right: 16px; font-weight: normal;">
+            <input type="radio" name="s1_4_p1" value="confirmed" required style="margin-right: 6px;"> Confirmed
+          </label>
+          <label style="display: inline-flex; align-items: center; margin-right: 16px; font-weight: normal;">
+            <input type="radio" name="s1_4_p1" value="partially" style="margin-right: 6px;"> Partially
+          </label>
+          <label style="display: inline-flex; align-items: center; font-weight: normal;">
+            <input type="radio" name="s1_4_p1" value="no" style="margin-right: 6px;"> No
+          </label>
+        </div>
+        <textarea id="s1_4_p1_notes" name="s1_4_p1_notes" class="short" placeholder="Notes: what's working, what's missing, what needs adjustment..."></textarea>
       </div>
+
+      <!-- Pillar 2 -->
       <div class="fg">
-        <label for="s1_4_p2">Operator Credibility (43%): team vote + notes:</label>
-        <textarea id="s1_4_p2" name="s1_4_p2" class="short" placeholder="Vote: Confirmed / Partially / No&#10;Notes: ..."></textarea>
+        <label style="font-weight: 600; margin-bottom: 8px; display: block;">Operator Credibility (43%)</label>
+        <div style="margin-bottom: 12px;">
+          <label style="display: inline-flex; align-items: center; margin-right: 16px; font-weight: normal;">
+            <input type="radio" name="s1_4_p2" value="confirmed" required style="margin-right: 6px;"> Confirmed
+          </label>
+          <label style="display: inline-flex; align-items: center; margin-right: 16px; font-weight: normal;">
+            <input type="radio" name="s1_4_p2" value="partially" style="margin-right: 6px;"> Partially
+          </label>
+          <label style="display: inline-flex; align-items: center; font-weight: normal;">
+            <input type="radio" name="s1_4_p2" value="no" style="margin-right: 6px;"> No
+          </label>
+        </div>
+        <textarea id="s1_4_p2_notes" name="s1_4_p2_notes" class="short" placeholder="Notes: what's working, what's missing, what needs adjustment..."></textarea>
       </div>
+
+      <!-- Pillar 3 -->
       <div class="fg">
-        <label for="s1_4_p3">Radical Transparency (55%): team vote + notes:</label>
-        <textarea id="s1_4_p3" name="s1_4_p3" class="short" placeholder="Vote: Confirmed / Partially / No&#10;Notes: ..."></textarea>
+        <label style="font-weight: 600; margin-bottom: 8px; display: block;">Radical Transparency (55%)</label>
+        <div style="margin-bottom: 12px;">
+          <label style="display: inline-flex; align-items: center; margin-right: 16px; font-weight: normal;">
+            <input type="radio" name="s1_4_p3" value="confirmed" required style="margin-right: 6px;"> Confirmed
+          </label>
+          <label style="display: inline-flex; align-items: center; margin-right: 16px; font-weight: normal;">
+            <input type="radio" name="s1_4_p3" value="partially" style="margin-right: 6px;"> Partially
+          </label>
+          <label style="display: inline-flex; align-items: center; font-weight: normal;">
+            <input type="radio" name="s1_4_p3" value="no" style="margin-right: 6px;"> No
+          </label>
+        </div>
+        <textarea id="s1_4_p3_notes" name="s1_4_p3_notes" class="short" placeholder="Notes: what's working, what's missing, what needs adjustment..."></textarea>
       </div>
+
+      <!-- Pillar 4 -->
       <div class="fg">
-        <label for="s1_4_p4">Dignity &amp; Empowerment: team vote + notes:</label>
-        <textarea id="s1_4_p4" name="s1_4_p4" class="short" placeholder="Vote: Confirmed / Partially / No&#10;Notes: ..."></textarea>
+        <label style="font-weight: 600; margin-bottom: 8px; display: block;">Dignity &amp; Empowerment (TBD%)</label>
+        <div style="margin-bottom: 12px;">
+          <label style="display: inline-flex; align-items: center; margin-right: 16px; font-weight: normal;">
+            <input type="radio" name="s1_4_p4" value="confirmed" required style="margin-right: 6px;"> Confirmed
+          </label>
+          <label style="display: inline-flex; align-items: center; margin-right: 16px; font-weight: normal;">
+            <input type="radio" name="s1_4_p4" value="partially" style="margin-right: 6px;"> Partially
+          </label>
+          <label style="display: inline-flex; align-items: center; font-weight: normal;">
+            <input type="radio" name="s1_4_p4" value="no" style="margin-right: 6px;"> No
+          </label>
+        </div>
+        <textarea id="s1_4_p4_notes" name="s1_4_p4_notes" class="short" placeholder="Notes: what's working, what's missing, what needs adjustment..."></textarea>
       </div>
     </div>
 
@@ -508,7 +555,7 @@
     <div class="card">
       <div class="card-eyebrow">Exercise 1.5 · 20 min</div>
       <div class="card-title">The Pivot Story</div>
-      <div class="card-desc">Write the narrative that explains Stronghold's evolution from tactical rescue to medical humanitarian work: as a natural continuation, not a hard pivot. Identify the constant, the change, and build the 3-act statement Ephraim can tell anywhere.</div>
+      <div class="card-desc">Write the narrative that explains Stronghold's evolution from tactical rescue to medical humanitarian work: as a natural continuation, not a hard pivot. This section captures the story of change. Identify the constant, the change, and build the 3-act statement Ephraim can tell anywhere.</div>
       <div class="fg">
         <label for="s1_5_constant">The constant: what has never changed about Stronghold across all phases:</label>
         <textarea id="s1_5_constant" name="s1_5_constant" class="short" placeholder="The mission core, the values, the commitment that's stayed the same throughout..."></textarea>

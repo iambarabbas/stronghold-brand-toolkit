@@ -881,16 +881,116 @@
       <div class="card-eyebrow muted">Pre-Work: Complete Before the Session</div>
       <div class="card-title">Content Prep</div>
       <div class="card-desc">Pull 3 real pieces of Stronghold content, rate them, and write a paragraph in your own voice before joining.</div>
+      
+      <h4 style="font-size: 15px; font-weight: 600; margin: 20px 0 12px; color: var(--navy);">Content Piece 1</h4>
       <div class="fg">
-        <label for="s3_pre_pieces">3 real pieces of Stronghold content you pulled: describe each briefly:</label>
-        <textarea id="s3_pre_pieces" name="s3_pre_pieces" placeholder="Piece 1 (Instagram caption): ...&#10;Piece 2 (Email): ...&#10;Piece 3 (Website paragraph): ..."></textarea>
+        <label for="s3_pre_type1">Content type:</label>
+        <select id="s3_pre_type1" name="s3_pre_type1" required>
+          <option value="">Select...</option>
+          <option value="instagram">Instagram caption</option>
+          <option value="email">Email</option>
+          <option value="website">Website paragraph</option>
+          <option value="other">Other</option>
+        </select>
       </div>
       <div class="fg">
-        <label for="s3_pre_ratings">Your rating for each piece <span style="color: var(--mid-gray); font-size: 13px;">(1 = lowest, 5 = highest)</span> and a note on why:</label>
-        <textarea id="s3_pre_ratings" name="s3_pre_ratings" class="short" placeholder="Piece 1: [rating]: because...&#10;Piece 2: [rating]: because...&#10;Piece 3: [rating]: because..."></textarea>
+        <label for="s3_pre_content1">Paste content or URL:</label>
+        <textarea id="s3_pre_content1" name="s3_pre_content1" class="short" placeholder="Paste the actual content here..."></textarea>
       </div>
       <div class="fg">
-        <label for="s3_pre_voice">One paragraph describing a recent Stronghold moment: in your own voice, no editing:</label>
+        <label for="s3_pre_desc1">Short description (1-2 sentences on what this is and where it lives):</label>
+        <input type="text" id="s3_pre_desc1" name="s3_pre_desc1" placeholder="e.g. Instagram post from March about field medical training">
+      </div>
+      <div class="fg">
+        <label for="s3_pre_rating1">Your rating <span style="color: var(--mid-gray); font-size: 13px;">(1 = lowest, 5 = highest)</span>:</label>
+        <select id="s3_pre_rating1" name="s3_pre_rating1" required style="max-width: 100px;">
+          <option value="">--</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label for="s3_pre_why1">Why this rating?</label>
+        <textarea id="s3_pre_why1" name="s3_pre_why1" class="short" placeholder="What's working or not working about this piece?"></textarea>
+      </div>
+      
+      <h4 style="font-size: 15px; font-weight: 600; margin: 24px 0 12px; color: var(--navy);">Content Piece 2</h4>
+      <div class="fg">
+        <label for="s3_pre_type2">Content type:</label>
+        <select id="s3_pre_type2" name="s3_pre_type2" required>
+          <option value="">Select...</option>
+          <option value="instagram">Instagram caption</option>
+          <option value="email">Email</option>
+          <option value="website">Website paragraph</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label for="s3_pre_content2">Paste content or URL:</label>
+        <textarea id="s3_pre_content2" name="s3_pre_content2" class="short" placeholder="Paste the actual content here..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s3_pre_desc2">Short description (1-2 sentences on what this is and where it lives):</label>
+        <input type="text" id="s3_pre_desc2" name="s3_pre_desc2" placeholder="e.g. Email to supporters about recent deployment">
+      </div>
+      <div class="fg">
+        <label for="s3_pre_rating2">Your rating <span style="color: var(--mid-gray); font-size: 13px;">(1 = lowest, 5 = highest)</span>:</label>
+        <select id="s3_pre_rating2" name="s3_pre_rating2" required style="max-width: 100px;">
+          <option value="">--</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label for="s3_pre_why2">Why this rating?</label>
+        <textarea id="s3_pre_why2" name="s3_pre_why2" class="short" placeholder="What's working or not working about this piece?"></textarea>
+      </div>
+      
+      <h4 style="font-size: 15px; font-weight: 600; margin: 24px 0 12px; color: var(--navy);">Content Piece 3</h4>
+      <div class="fg">
+        <label for="s3_pre_type3">Content type:</label>
+        <select id="s3_pre_type3" name="s3_pre_type3" required>
+          <option value="">Select...</option>
+          <option value="instagram">Instagram caption</option>
+          <option value="email">Email</option>
+          <option value="website">Website paragraph</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label for="s3_pre_content3">Paste content or URL:</label>
+        <textarea id="s3_pre_content3" name="s3_pre_content3" class="short" placeholder="Paste the actual content here..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s3_pre_desc3">Short description (1-2 sentences on what this is and where it lives):</label>
+        <input type="text" id="s3_pre_desc3" name="s3_pre_desc3" placeholder="e.g. Website about page section">
+      </div>
+      <div class="fg">
+        <label for="s3_pre_rating3">Your rating <span style="color: var(--mid-gray); font-size: 13px;">(1 = lowest, 5 = highest)</span>:</label>
+        <select id="s3_pre_rating3" name="s3_pre_rating3" required style="max-width: 100px;">
+          <option value="">--</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label for="s3_pre_why3">Why this rating?</label>
+        <textarea id="s3_pre_why3" name="s3_pre_why3" class="short" placeholder="What's working or not working about this piece?"></textarea>
+      </div>
+      
+      <h4 style="font-size: 15px; font-weight: 600; margin: 24px 0 12px; color: var(--navy);">Your Voice Sample</h4>
+      <div class="fg">
+        <label for="s3_pre_voice">Describe a recent Stronghold moment in your own words:</label>
+        <p style="font-size: 13px; color: var(--mid-gray); margin-bottom: 8px;">Write one paragraph. Do not edit it. Do not make it sound official. Use the words you would actually say out loud. This is a voice sample, not a draft. The raw version is more useful than the polished one.</p>
         <textarea id="s3_pre_voice" name="s3_pre_voice" placeholder="Just write it. Don't edit. Don't overthink it. Go."></textarea>
       </div>
     </div>
@@ -922,7 +1022,7 @@
     <div class="card">
       <div class="card-eyebrow">Exercise 3.2 · 15 min</div>
       <div class="card-title">Voice Dial Calibration</div>
-      <div class="card-desc">Set the exact position on each voice dimension for Stronghold. Use specific content examples to justify your position. Move the sliders to reflect where the team lands.</div>
+      <div class="card-desc">Set the exact position on each voice dimension for Stronghold. Move the sliders to reflect where Stronghold should sit on each spectrum.</div>
 
       <div class="dial">
         <div class="dial-label">Formal ←→ Casual</div>
@@ -994,21 +1094,35 @@
     <div class="card">
       <div class="card-eyebrow">Exercise 3.3 · 25 min</div>
       <div class="card-title">Before &amp; After Rewrites</div>
-      <div class="card-desc">Prove the voice in practice by rewriting real content together: a website paragraph, a donation ask, and an Instagram caption. Apply the confirmed voice principles live.</div>
+      <div class="card-desc">Prove the voice in practice by rewriting real content: a website paragraph, a donation ask, and an Instagram caption. Apply the confirmed voice principles before the session.</div>
+      
+      <h4 style="font-size: 15px; font-weight: 600; margin: 20px 0 12px; color: var(--navy);">Website Paragraph</h4>
       <div class="fg">
-        <label for="s3_3_web_orig">Website paragraph: original version:</label>
+        <label for="s3_3_web_orig">Original version:</label>
         <textarea id="s3_3_web_orig" name="s3_3_web_orig" placeholder="Paste the original paragraph from the current Stronghold website..."></textarea>
       </div>
       <div class="fg">
-        <label for="s3_3_web_new">Website paragraph: rewrite:</label>
+        <label for="s3_3_web_new">Rewrite:</label>
         <textarea id="s3_3_web_new" name="s3_3_web_new" placeholder="The rewritten version applying the confirmed voice principles..."></textarea>
       </div>
+      
+      <h4 style="font-size: 15px; font-weight: 600; margin: 24px 0 12px; color: var(--navy);">Donation Ask</h4>
       <div class="fg">
-        <label for="s3_3_donation">Donation ask: rewrite:</label>
-        <textarea id="s3_3_donation" name="s3_3_donation" placeholder="How Stronghold asks for support, in the confirmed voice..."></textarea>
+        <label for="s3_3_donation_orig">Original version:</label>
+        <textarea id="s3_3_donation_orig" name="s3_3_donation_orig" placeholder="Paste the current donation ask language..."></textarea>
       </div>
       <div class="fg">
-        <label for="s3_3_caption">Instagram caption: rewrite:</label>
+        <label for="s3_3_donation">Rewrite:</label>
+        <textarea id="s3_3_donation" name="s3_3_donation" placeholder="How Stronghold asks for support, in the confirmed voice..."></textarea>
+      </div>
+      
+      <h4 style="font-size: 15px; font-weight: 600; margin: 24px 0 12px; color: var(--navy);">Instagram Caption</h4>
+      <div class="fg">
+        <label for="s3_3_caption_orig">Original version:</label>
+        <textarea id="s3_3_caption_orig" name="s3_3_caption_orig" class="short" placeholder="Paste a recent Instagram caption..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s3_3_caption">Rewrite:</label>
         <textarea id="s3_3_caption" name="s3_3_caption" class="short" placeholder="A caption the team agrees sounds unmistakably like Stronghold..."></textarea>
       </div>
     </div>

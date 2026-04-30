@@ -626,6 +626,39 @@
 
     <!-- Pre-Work removed per CSV requirements -->
 
+    <!-- Aspirational Websites -->
+    <div class="card">
+      <div class="card-eyebrow">Pre-Session Exercise</div>
+      <div class="card-title">Aspirational Websites</div>
+      <div class="card-desc">Submit 3-5 websites that nail the feeling Stronghold wants. These are digital references that inspire the direction.</div>
+      
+      <div class="fg">
+        <label for="s2_aspire_url1">Website URL 1: <span style="color: #d32f2f;">*</span></label>
+        <input type="url" id="s2_aspire_url1" name="s2_aspire_url1" placeholder="https://..." required>
+        <textarea id="s2_aspire_why1" name="s2_aspire_why1" class="short" style="margin-top: 8px;" placeholder="Why this site feels right for Stronghold..." required></textarea>
+      </div>
+      <div class="fg">
+        <label for="s2_aspire_url2">Website URL 2: <span style="color: #d32f2f;">*</span></label>
+        <input type="url" id="s2_aspire_url2" name="s2_aspire_url2" placeholder="https://..." required>
+        <textarea id="s2_aspire_why2" name="s2_aspire_why2" class="short" style="margin-top: 8px;" placeholder="Why this site feels right for Stronghold..." required></textarea>
+      </div>
+      <div class="fg">
+        <label for="s2_aspire_url3">Website URL 3: <span style="color: #d32f2f;">*</span></label>
+        <input type="url" id="s2_aspire_url3" name="s2_aspire_url3" placeholder="https://..." required>
+        <textarea id="s2_aspire_why3" name="s2_aspire_why3" class="short" style="margin-top: 8px;" placeholder="Why this site feels right for Stronghold..." required></textarea>
+      </div>
+      <div class="fg">
+        <label for="s2_aspire_url4">Website URL 4: <span style="color: #888;">(optional)</span></label>
+        <input type="url" id="s2_aspire_url4" name="s2_aspire_url4" placeholder="https://...">
+        <textarea id="s2_aspire_why4" name="s2_aspire_why4" class="short" style="margin-top: 8px;" placeholder="Why this site feels right for Stronghold..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s2_aspire_url5">Website URL 5: <span style="color: #888;">(optional)</span></label>
+        <input type="url" id="s2_aspire_url5" name="s2_aspire_url5" placeholder="https://...">
+        <textarea id="s2_aspire_why5" name="s2_aspire_why5" class="short" style="margin-top: 8px;" placeholder="Why this site feels right for Stronghold..."></textarea>
+      </div>
+    </div>
+
     <!-- 2.1 -->
     <div class="card">
       <div class="card-eyebrow">Exercise 2.1 · 20 min</div>
@@ -637,22 +670,22 @@
       <div class="fg">
         <label for="s2_1_url1">Image URL 1: <span style="color: #d32f2f;">*</span></label>
         <input type="url" id="s2_1_url1" name="s2_1_url1" placeholder="https://drive.google.com/... or https://..." required>
-        <textarea id="s2_1_why1" name="s2_1_why1" class="short" style="margin-top: 8px;" placeholder="Why this feels like Stronghold..." required></textarea>
+        <textarea id="s2_1_why1" name="s2_1_why1" class="short" style="margin-top: 8px;" placeholder="Why this feels like Stronghold..."></textarea>
       </div>
       <div class="fg">
         <label for="s2_1_url2">Image URL 2: <span style="color: #d32f2f;">*</span></label>
         <input type="url" id="s2_1_url2" name="s2_1_url2" placeholder="https://drive.google.com/... or https://..." required>
-        <textarea id="s2_1_why2" name="s2_1_why2" class="short" style="margin-top: 8px;" placeholder="Why this feels like Stronghold..." required></textarea>
+        <textarea id="s2_1_why2" name="s2_1_why2" class="short" style="margin-top: 8px;" placeholder="Why this feels like Stronghold..."></textarea>
       </div>
       <div class="fg">
         <label for="s2_1_url3">Image URL 3: <span style="color: #d32f2f;">*</span></label>
         <input type="url" id="s2_1_url3" name="s2_1_url3" placeholder="https://drive.google.com/... or https://..." required>
-        <textarea id="s2_1_why3" name="s2_1_why3" class="short" style="margin-top: 8px;" placeholder="Why this feels like Stronghold..." required></textarea>
+        <textarea id="s2_1_why3" name="s2_1_why3" class="short" style="margin-top: 8px;" placeholder="Why this feels like Stronghold..."></textarea>
       </div>
       <div class="fg">
         <label for="s2_1_url4">Image URL 4: <span style="color: #d32f2f;">*</span></label>
         <input type="url" id="s2_1_url4" name="s2_1_url4" placeholder="https://drive.google.com/... or https://..." required>
-        <textarea id="s2_1_why4" name="s2_1_why4" class="short" style="margin-top: 8px;" placeholder="Why this feels like Stronghold..." required></textarea>
+        <textarea id="s2_1_why4" name="s2_1_why4" class="short" style="margin-top: 8px;" placeholder="Why this feels like Stronghold..."></textarea>
       </div>
       <div class="fg">
         <label for="s2_1_url5">Image URL 5: <span style="color: #888;">(optional)</span></label>
@@ -704,7 +737,7 @@
           <option value="adjust">Adjust</option>
           <option value="replace">Replace</option>
         </select>
-        <textarea id="s2_2_navy_notes" name="s2_2_navy_notes" class="short" placeholder="What should change and why? (leave blank if confirmed)"></textarea>
+        <textarea id="s2_2_navy_notes" name="s2_2_navy_notes" class="short" placeholder="What should change and why? (If confirmed selected type N/A)"></textarea>
       </div>
       
       <div class="fg">
@@ -718,7 +751,7 @@
           <option value="adjust">Adjust</option>
           <option value="replace">Replace</option>
         </select>
-        <textarea id="s2_2_gold_notes" name="s2_2_gold_notes" class="short" placeholder="What should change and why? (leave blank if confirmed)"></textarea>
+        <textarea id="s2_2_gold_notes" name="s2_2_gold_notes" class="short" placeholder="What should change and why? (If confirmed selected type N/A)"></textarea>
       </div>
       
       <div class="fg">
@@ -732,7 +765,7 @@
           <option value="adjust">Adjust</option>
           <option value="replace">Replace</option>
         </select>
-        <textarea id="s2_2_steel_notes" name="s2_2_steel_notes" class="short" placeholder="What should change and why? (leave blank if confirmed)"></textarea>
+        <textarea id="s2_2_steel_notes" name="s2_2_steel_notes" class="short" placeholder="What should change and why? (If confirmed selected type N/A)"></textarea>
       </div>
       <div class="fg">
         <label for="s2_2_add">Colors to add or replace:</label>
@@ -758,7 +791,7 @@
           <option value="adjust">Adjust</option>
           <option value="replace">Replace</option>
         </select>
-        <textarea id="s2_3_headline_notes" name="s2_3_headline_notes" class="short" placeholder="What should change and why? Alternative font name? (leave blank if confirmed)"></textarea>
+        <textarea id="s2_3_headline_notes" name="s2_3_headline_notes" class="short" placeholder="What should change and why? Alternative font name? (If confirmed selected type N/A)"></textarea>
       </div>
       <div class="fg">
         <label for="s2_3_body"><strong>Body copy font (Inter Bold)</strong></label>
@@ -769,7 +802,7 @@
           <option value="adjust">Adjust</option>
           <option value="replace">Replace</option>
         </select>
-        <textarea id="s2_3_body_notes" name="s2_3_body_notes" class="short" placeholder="What should change and why? Alternative font name? (leave blank if confirmed)"></textarea>
+        <textarea id="s2_3_body_notes" name="s2_3_body_notes" class="short" placeholder="What should change and why? Alternative font name? (If confirmed selected type N/A)"></textarea>
       </div>
       <div class="fg">
         <label for="s2_3_quote"><strong>Pull quote font (Libre Baskerville Italic)</strong></label>
@@ -780,7 +813,7 @@
           <option value="adjust">Adjust</option>
           <option value="replace">Replace</option>
         </select>
-        <textarea id="s2_3_quote_notes" name="s2_3_quote_notes" class="short" placeholder="What should change and why? Alternative font name? (leave blank if confirmed)"></textarea>
+        <textarea id="s2_3_quote_notes" name="s2_3_quote_notes" class="short" placeholder="What should change and why? Alternative font name? (If confirmed selected type N/A)"></textarea>
       </div>
       <div class="fg">
         <label for="s2_3_notes">Overall typography feel: team notes:</label>
@@ -797,7 +830,7 @@
       <div class="fg">
         <label for="s2_4_q1"><strong>1. Which content types are approved for use on the Stronghold website and social channels?</strong> <span style="color: #d32f2f;">* (select at least one)</span></label>
         <div style="margin: 8px 0 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-          <label style="font-weight: normal;"><input type="checkbox" name="s2_4_types" value="field_photo" style="margin-right: 6px;" required> Field photography</label>
+          <label style="font-weight: normal;"><input type="checkbox" name="s2_4_types" value="field_photo" style="margin-right: 6px;"> Field photography</label>
           <label style="font-weight: normal;"><input type="checkbox" name="s2_4_types" value="portrait" style="margin-right: 6px;"> Portrait</label>
           <label style="font-weight: normal;"><input type="checkbox" name="s2_4_types" value="doc_video" style="margin-right: 6px;"> Documentary video</label>
           <label style="font-weight: normal;"><input type="checkbox" name="s2_4_types" value="reels" style="margin-right: 6px;"> Short-form reels</label>
@@ -1115,17 +1148,17 @@
     <div class="card">
       <div class="card-eyebrow">Exercise 4.3 · 20 min</div>
       <div class="card-title">Story Bank Categories</div>
-      <div class="card-desc">Build the story capture system so field content doesn't get lost. For each category: what's the minimum viable capture? Assign a team member and agree on where stories are stored before they reach Indigo Tones.</div>
+      <div class="card-desc">Build the story capture system so field content doesn't get lost. For each category: what's the minimum viable capture? Agree on where stories are stored before they reach Indigo Tones.</div>
       <div class="fg">
-        <label for="s4_3_c1">Story category 1: name + minimum viable capture method + who's responsible:</label>
-        <textarea id="s4_3_c1" name="s4_3_c1" class="short" placeholder="Category: [e.g. Field Updates]&#10;Capture: [e.g. Photo + 3 sentences]&#10;"></textarea>
+        <label for="s4_3_c1">Story category 1: name + minimum viable capture method:</label>
+        <textarea id="s4_3_c1" name="s4_3_c1" class="short" placeholder="Category: [e.g. Field Updates]&#10;Capture: [e.g. Photo + 3 sentences]"></textarea>
       </div>
       <div class="fg">
-        <label for="s4_3_c2">Story category 2: name + capture method + who's responsible:</label>
+        <label for="s4_3_c2">Story category 2: name + capture method:</label>
         <textarea id="s4_3_c2" name="s4_3_c2" class="short" placeholder="Category: &#10;Capture: "></textarea>
       </div>
       <div class="fg">
-        <label for="s4_3_c3">Story category 3: name + capture method + who's responsible:</label>
+        <label for="s4_3_c3">Story category 3: name + capture method:</label>
         <textarea id="s4_3_c3" name="s4_3_c3" class="short" placeholder="Category: &#10;Capture: "></textarea>
       </div>
       <div class="fg">
@@ -1277,10 +1310,26 @@ function validateCurrentStep() {
   const currentStepEl = document.getElementById('step-' + cur);
   if (!currentStepEl) return true;
   
-  const inputs = currentStepEl.querySelectorAll('input[type="text"], input[type="email"], input[type="date"], textarea, select');
+  // Check Exercise 2.4 checkboxes (at least one must be selected)
+  if (cur === 2) {
+    const checkboxes = currentStepEl.querySelectorAll('input[name="s2_4_types"]');
+    const anyChecked = Array.from(checkboxes).some(cb => cb.checked);
+    if (!anyChecked) {
+      alert('⚠️ Exercise 2.4: Visual Content Standards\n\nYou must select at least one content type.\n\nPlease check at least one option in "Which content types are approved..."');
+      checkboxes[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return false;
+    }
+  }
+  
+  const inputs = currentStepEl.querySelectorAll('input[type="text"], input[type="email"], input[type="date"], input[type="url"], textarea, select');
   const empty = [];
   
   inputs.forEach(input => {
+    // Skip optional fields (those without 'required' attribute)
+    if (!input.hasAttribute('required')) {
+      return;
+    }
+    
     if (input.value.trim() === '') {
       empty.push(input);
       // Strong red highlight for empty fields

@@ -35,31 +35,9 @@
       text-align: center;
       margin-bottom: 32px;
     }
-    .logo-text {
-      font-size: 32px;
-      font-weight: 800;
-      color: var(--navy);
-      letter-spacing: -0.02em;
-    }
-    .logo-shield {
-      display: inline-block;
-      width: 48px;
-      height: 48px;
-      background: var(--gold);
-      border-radius: 8px;
-      margin-bottom: 12px;
-      position: relative;
-    }
-    .logo-shield::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 24px;
-      height: 28px;
-      border: 3px solid var(--navy);
-      border-radius: 4px 4px 12px 12px;
+    .logo img {
+      max-width: 200px;
+      height: auto;
     }
     .form-title {
       font-size: 24px;
@@ -142,8 +120,7 @@
 <body>
   <div class="login-container">
     <div class="logo">
-      <div class="logo-shield"></div>
-      <div class="logo-text">STRONGHOLD</div>
+      <img src="logo.webp" alt="Stronghold">
     </div>
     
     <h1 class="form-title">Brand Toolkit</h1>

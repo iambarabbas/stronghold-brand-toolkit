@@ -289,6 +289,12 @@
 
   </style>
 </head>
+  <script>
+    // Check authentication
+    if (sessionStorage.getItem("stronghold_auth") !== "true") {
+      window.location.href = "login.html";
+    }
+  </script>
 <body>
 
 <!-- ════════════════════════════ HEADER ════════════════════════════ -->
@@ -387,16 +393,15 @@
     <div class="session-hd">
       <div class="session-eyebrow">Session 1 of 4</div>
       <div class="session-title">Brand Foundation</div>
-      <div class="session-desc">We establish who Stronghold is at its core: the mission, the model, what makes it different, and the emotional territory the brand owns.</div>
+      <div class="session-desc">In this session we will establish who Stronghold is at its core: the mission, the model, what makes it different, and the emotional territory the brand owns.</div>
       <p class="required-note"><svg class="inline-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline; vertical-align: middle; margin-right: 6px;"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg> All fields are required. Complete this session before moving forward.</p>
       <div class="session-meta">Total Time: 90 minutes · Remote via Zoom or Google Meet</div>
     </div>
 
     <!-- Pre-Work -->
     <div class="card prework">
-      <div class="card-eyebrow muted">Pre-Work: Complete Before the Session</div>
       <div class="card-title">Individual Prep</div>
-      <div class="card-desc">Answer these independently before joining. Sessions without pre-work completed will run long and produce weaker outputs.</div>
+      <div class="card-desc">Almost all the boxes need to be pre-filled before the session.</div>
       <div class="fg">
         <label for="s1_pre_moment">What is one moment that defines what Stronghold stands for? <span class="opt">(3–5 sentences)</span></label>
         <textarea id="s1_pre_moment" name="s1_pre_moment" placeholder="Describe a specific moment or experience that captures the essence of what Stronghold is..."></textarea>
@@ -432,7 +437,7 @@
         <textarea id="s1_1_p1" name="s1_1_p1" class="short" placeholder="..."></textarea>
       </div>
       <div class="fg">
-        <label for="s1_1_recurring">Recurring phrases identified across all versions:</label>
+        <label for="s1_1_recurring"><strong>Recurring Phrases</strong> identified across all versions:</label>
         <input type="text" id="s1_1_recurring" name="s1_1_recurring" placeholder="e.g. dignity, direct, operators, field-first...">
       </div>
       <div class="fg">
@@ -446,6 +451,12 @@
       <div class="card-eyebrow">Exercise 1.2 · 15 min</div>
       <div class="card-title">What We Are NOT</div>
       <div class="card-desc">This section defines the brand exclusion boundaries: what Stronghold refuses to be. Discuss 3 organizations Stronghold is different from, explain how, then write 5 firm "We Are NOT" statements.</div>
+      <div class="fg">
+        <label for="s1_2_orgs">List the 3 organizations Stronghold is different from:</label>
+        <textarea id="s1_2_orgs" name="s1_2_orgs" class="short" placeholder="1. Organization name - how we're different
+2. Organization name - how we're different
+3. Organization name - how we're different"></textarea>
+      </div>
       <div class="fg"><label for="s1_2_n1">We are NOT (1):</label><input type="text" id="s1_2_n1" name="s1_2_n1" placeholder="e.g. We are NOT a traditional charity that treats recipients as victims"></div>
       <div class="fg"><label for="s1_2_n2">We are NOT (2):</label><input type="text" id="s1_2_n2" name="s1_2_n2" placeholder="..."></div>
       <div class="fg"><label for="s1_2_n3">We are NOT (3):</label><input type="text" id="s1_2_n3" name="s1_2_n3" placeholder="..."></div>
@@ -457,7 +468,7 @@
     <div class="card">
       <div class="card-eyebrow">Exercise 1.3 · 20 min</div>
       <div class="card-title">The Origin Story</div>
-      <div class="card-desc">Surface the founding moment and core conviction that makes Stronghold real. Tell the story of how Stronghold started: the specific moment the decision was made. Answer the questions below, then write the 3-sentence version together.</div>
+      <div class="card-desc">Discuss the founding moment and core conviction that makes Stronghold real. Tell the story of how Stronghold started: the specific moment the decision was made. Answer the questions below, then write the 3-sentence version together.</div>
       <div class="fg">
         <label for="s1_3_problem">The problem we saw:</label>
         <textarea id="s1_3_problem" name="s1_3_problem" class="short" placeholder="What gap, failure, or injustice did you witness that made Stronghold necessary?"></textarea>
@@ -480,7 +491,7 @@
     <div class="card">
       <div class="card-eyebrow">Exercise 1.4 · 20 min</div>
       <div class="card-title">Brand Pillars Validation</div>
-      <div class="card-desc">Validate the four brand pillars from the Brand OS against the team's own experience. Vote for each: Confirmed / Partially / No: and note what's missing or what needs adjusting.</div>
+      <div class="card-desc">Validate the four brand pillars from the <a href="https://docs.google.com/document/d/1bKNTuYrQg0F0TK3m0hJOQxqCAVddTa5_/edit" target="_blank" style="color: var(--gold); text-decoration: underline;">Brand OS</a> against the team's own experience. Vote for each: Confirmed / Partially / No: and note what's missing or what needs adjusting.</div>
       <!-- Pillar 1 -->
       <div class="fg">
         <label style="font-weight: 600; margin-bottom: 8px; display: block;">Stories of Impact (48%)</label>
@@ -554,7 +565,7 @@
     <div class="card">
       <div class="card-eyebrow">Exercise 1.5 · 20 min</div>
       <div class="card-title">The Pivot Story</div>
-      <div class="card-desc">Write the narrative that explains Stronghold's evolution from tactical rescue to medical humanitarian work: as a natural continuation, not a hard pivot. This section captures the story of change. Identify the constant, the change, and build the 3-act statement Ephraim can tell anywhere.</div>
+      <div class="card-desc">Write the narrative that explains Stronghold's evolution from tactical rescue to medical humanitarian work: as a natural continuation, not a hard pivot. This section captures the story of change. Identify the constant, the change, and build the 3-act statement that can be shared.</div>
       <div class="fg">
         <label for="s1_5_constant">The constant: what has never changed about Stronghold across all phases:</label>
         <textarea id="s1_5_constant" name="s1_5_constant" class="short" placeholder="The mission core, the values, the commitment that's stayed the same throughout..."></textarea>
@@ -568,8 +579,8 @@
         <textarea id="s1_5_3act" name="s1_5_3act" placeholder="We started doing...&#10;That taught us...&#10;Now we..."></textarea>
       </div>
       <div class="fg">
-        <label for="s1_5_podcast">How Ephraim says this in 30 seconds on a podcast: write it out word for word:</label>
-        <textarea id="s1_5_podcast" name="s1_5_podcast" placeholder="The short, punchy verbal version: the line that lands on Jocko or Lewis Howes..."></textarea>
+        <label for="s1_5_podcast">Elevator pitch: how to talk about or educate people about Stronghold:</label>
+        <textarea id="s1_5_podcast" name="s1_5_podcast" placeholder="Write it out word for word..."></textarea>
       </div>
     </div>
 
@@ -577,21 +588,21 @@
     <div class="card">
       <div class="card-eyebrow">Exercise 1.6 · 15 min</div>
       <div class="card-title">Our Motto</div>
-      <div class="card-desc">Agree on the single line that captures Stronghold's essence: the phrase Ephraim can say on any podcast, any stage, or any email and have it land perfectly. Three options from the Brand OS: "A Few Good Men" / "Charity With Dignity" / "We Run Toward the Fire."</div>
+      <div class="card-desc">Agree on the single line that captures Stronghold's essence: the phrase that can be used on any podcast, any stage, or any email and have it land perfectly. Three options from the Brand OS: "A Few Good Men" / "Charity With Dignity" / "We Run Toward the Fire." Rate each option individually from 1 (lowest) to 5 (highest).</div>
       <div class="fg">
-        <label>Team votes: number of votes for each option:</label>
+        <label>Individual votes: rate each option from 1 to 5:</label>
         <div class="vote-wrap">
           <div class="vote-opt">
             <label for="s1_6_v1">A Few Good Men</label>
-            <input type="number" id="s1_6_v1" name="s1_6_v1" min="0" placeholder="0" style="text-align:center;">
+            <input type="number" id="s1_6_v1" name="s1_6_v1" min="1" max="5" step="1" placeholder="1-5" style="text-align:center;">
           </div>
           <div class="vote-opt">
             <label for="s1_6_v2">Charity With Dignity</label>
-            <input type="number" id="s1_6_v2" name="s1_6_v2" min="0" placeholder="0" style="text-align:center;">
+            <input type="number" id="s1_6_v2" name="s1_6_v2" min="1" max="5" step="1" placeholder="1-5" style="text-align:center;">
           </div>
           <div class="vote-opt">
             <label for="s1_6_v3">We Run Toward the Fire</label>
-            <input type="number" id="s1_6_v3" name="s1_6_v3" min="0" placeholder="0" style="text-align:center;">
+            <input type="number" id="s1_6_v3" name="s1_6_v3" min="1" max="5" step="1" placeholder="1-5" style="text-align:center;">
           </div>
         </div>
       </div>
@@ -622,13 +633,8 @@
 
     <!-- Pre-Work -->
     <div class="card prework">
-      <div class="card-eyebrow muted">Pre-Work: Complete Before the Session</div>
       <div class="card-title">Visual Prep</div>
-      <div class="card-desc">Review the Brand OS color palette and typography, then collect 4-7 images that feel like Stronghold. Provide specific examples like "Close-up hands applying wound care in low light."</div>
-      <div class="fg">
-        <label for="s2_pre_images">List 4-7 images that feel like Stronghold (Google Drive link or descriptions):</label>
-        <textarea id="s2_pre_images" name="s2_pre_images" class="short" placeholder="1. Close-up hands applying wound care in low light&#10;2. Team member in field gear, face partially obscured&#10;3. Community member post-treatment, dignified moment&#10;4. ..."></textarea>
-      </div>
+      <div class="card-desc">Review the Brand OS color palette and typography. Images are submitted in Exercise 2.1 below.</div>
       <div class="fg">
         <label for="s2_pre_brands">List 3 brands whose visual identity you respect and why <span class="opt">(not necessarily nonprofits)</span>:</label>
         <textarea id="s2_pre_brands" name="s2_pre_brands" placeholder="Brand 1: [name]: because...&#10;Brand 2: [name]: because...&#10;Brand 3: [name]: because..."></textarea>
@@ -645,42 +651,57 @@
       <div class="card-title">Image Sort</div>
       
       <h4 style="font-size: 15px; font-weight: 600; margin: 20px 0 12px; color: var(--navy);">Section A: Pre-Session Image Submission</h4>
-      <div class="card-desc" style="margin-bottom: 16px;">Each participant submits image URLs before the session. Google Drive links or direct web URLs both accepted.</div>
+      <div class="card-desc" style="margin-bottom: 16px;">List 4-7 images that feel like Stronghold. Google Drive links or direct web URLs both accepted. First 4 are required.</div>
       
       <div class="fg">
-        <label for="s2_1_url1">Person 1 - Image URL:</label>
-        <input type="url" id="s2_1_url1" name="s2_1_url1" placeholder="https://drive.google.com/... or https://...">
-        <textarea id="s2_1_why1" name="s2_1_why1" class="short" style="margin-top: 8px;" placeholder="Why this feels like Stronghold..."></textarea>
+        <label for="s2_1_url1">Image URL 1: <span style="color: var(--gold);">*</span></label>
+        <input type="url" id="s2_1_url1" name="s2_1_url1" placeholder="https://drive.google.com/... or https://..." required>
+        <textarea id="s2_1_why1" name="s2_1_why1" class="short" style="margin-top: 8px;" placeholder="Why this feels like Stronghold..." required></textarea>
       </div>
       <div class="fg">
-        <label for="s2_1_url2">Person 2 - Image URL:</label>
-        <input type="url" id="s2_1_url2" name="s2_1_url2" placeholder="https://drive.google.com/... or https://...">
-        <textarea id="s2_1_why2" name="s2_1_why2" class="short" style="margin-top: 8px;" placeholder="Why this feels like Stronghold..."></textarea>
+        <label for="s2_1_url2">Image URL 2: <span style="color: var(--gold);">*</span></label>
+        <input type="url" id="s2_1_url2" name="s2_1_url2" placeholder="https://drive.google.com/... or https://..." required>
+        <textarea id="s2_1_why2" name="s2_1_why2" class="short" style="margin-top: 8px;" placeholder="Why this feels like Stronghold..." required></textarea>
       </div>
       <div class="fg">
-        <label for="s2_1_url3">Person 3 - Image URL:</label>
-        <input type="url" id="s2_1_url3" name="s2_1_url3" placeholder="https://drive.google.com/... or https://...">
-        <textarea id="s2_1_why3" name="s2_1_why3" class="short" style="margin-top: 8px;" placeholder="Why this feels like Stronghold..."></textarea>
+        <label for="s2_1_url3">Image URL 3: <span style="color: var(--gold);">*</span></label>
+        <input type="url" id="s2_1_url3" name="s2_1_url3" placeholder="https://drive.google.com/... or https://..." required>
+        <textarea id="s2_1_why3" name="s2_1_why3" class="short" style="margin-top: 8px;" placeholder="Why this feels like Stronghold..." required></textarea>
       </div>
       <div class="fg">
-        <label for="s2_1_url4">Person 4 - Image URL:</label>
-        <input type="url" id="s2_1_url4" name="s2_1_url4" placeholder="https://drive.google.com/... or https://...">
-        <textarea id="s2_1_why4" name="s2_1_why4" class="short" style="margin-top: 8px;" placeholder="Why this feels like Stronghold..."></textarea>
+        <label for="s2_1_url4">Image URL 4: <span style="color: var(--gold);">*</span></label>
+        <input type="url" id="s2_1_url4" name="s2_1_url4" placeholder="https://drive.google.com/... or https://..." required>
+        <textarea id="s2_1_why4" name="s2_1_why4" class="short" style="margin-top: 8px;" placeholder="Why this feels like Stronghold..." required></textarea>
+      </div>
+      <div class="fg">
+        <label for="s2_1_url5">Image URL 5 (optional):</label>
+        <input type="url" id="s2_1_url5" name="s2_1_url5" placeholder="https://drive.google.com/... or https://...">
+        <textarea id="s2_1_why5" name="s2_1_why5" class="short" style="margin-top: 8px;" placeholder="Why this feels like Stronghold..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s2_1_url6">Image URL 6 (optional):</label>
+        <input type="url" id="s2_1_url6" name="s2_1_url6" placeholder="https://drive.google.com/... or https://...">
+        <textarea id="s2_1_why6" name="s2_1_why6" class="short" style="margin-top: 8px;" placeholder="Why this feels like Stronghold..."></textarea>
+      </div>
+      <div class="fg">
+        <label for="s2_1_url7">Image URL 7 (optional):</label>
+        <input type="url" id="s2_1_url7" name="s2_1_url7" placeholder="https://drive.google.com/... or https://...">
+        <textarea id="s2_1_why7" name="s2_1_why7" class="short" style="margin-top: 8px;" placeholder="Why this feels like Stronghold..."></textarea>
       </div>
       
       <h4 style="font-size: 15px; font-weight: 600; margin: 24px 0 12px; color: var(--navy);">Section B: Live Voting (During Session)</h4>
       <div class="card-desc" style="margin-bottom: 16px;">Review all submitted images. For each, note the category and why it resonates (or doesn't).</div>
       
       <div class="fg">
-        <label for="s2_1_agree">Images with most agreement:</label>
+        <label for="s2_1_agree">Which images have the most agreement?</label>
         <textarea id="s2_1_agree" name="s2_1_agree" class="short" placeholder="Which images did everyone respond to? Note the URL or description..."></textarea>
       </div>
       <div class="fg">
-        <label for="s2_1_cat">Primary visual category:</label>
+        <label for="s2_1_cat">What are the primary visual categories?</label>
         <input type="text" id="s2_1_cat" name="s2_1_cat" placeholder="e.g. Documentary + Operator">
       </div>
       <div class="fg">
-        <label for="s2_1_common">What these images have in common:</label>
+        <label for="s2_1_common">What do these images have in common?</label>
         <textarea id="s2_1_common" name="s2_1_common" class="short" placeholder="The visual qualities that make them all feel like Stronghold..."></textarea>
       </div>
     </div>

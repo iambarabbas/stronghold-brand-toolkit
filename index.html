@@ -1400,7 +1400,21 @@ function updDial(id) {
 // ═══════════════════════════════════════════════════
 function allData() {
   const d = {};
-  document.querySelectorAll('input[name], textarea[name]').forEach(el => {
+  // Save text inputs, textareas, and selects
+  document.querySelectorAll('input[name]:not([type="checkbox"]):not([type="radio"]), textarea[name], select[name]').forEach(el => {
+    d[el.name] = el.value;
+  });
+  // Save checkboxes (collect all checked values for same name)
+  const checkboxGroups = {};
+  document.querySelectorAll('input[type="checkbox"][name]').forEach(el => {
+    if (!checkboxGroups[el.name]) checkboxGroups[el.name] = [];
+    if (el.checked) checkboxGroups[el.name].push(el.value);
+  });
+  Object.keys(checkboxGroups).forEach(name => {
+    d[name] = checkboxGroups[name].join(',');
+  });
+  // Save radio buttons
+  document.querySelectorAll('input[type="radio"][name]:checked').forEach(el => {
     d[el.name] = el.value;
   });
   d['__step'] = cur;
@@ -1428,6 +1442,25 @@ function loadProgress() {
     const d = JSON.parse(raw);
     Object.keys(d).forEach(k => {
       if (k === '__step') return;
+      
+      // Handle checkboxes (stored as comma-separated values)
+      const checkboxes = document.querySelectorAll('input[type="checkbox"][name="' + k + '"]');
+      if (checkboxes.length > 0) {
+        const checkedValues = d[k].split(',');
+        checkboxes.forEach(cb => {
+          cb.checked = checkedValues.includes(cb.value);
+        });
+        return;
+      }
+      
+      // Handle radio buttons
+      const radio = document.querySelector('input[type="radio"][name="' + k + '"][value="' + d[k] + '"]');
+      if (radio) {
+        radio.checked = true;
+        return;
+      }
+      
+      // Handle regular inputs, textareas, selects
       const el = document.querySelector('[name="' + k + '"]');
       if (!el) return;
       el.value = d[k];
